@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="DotnetCenter">
+</Property><Property Name="Solution File" Value="E:\Escritorio\Dotnet Center\DotnetCenter\DotnetCenter.sln">
+</Property><Property Name="User Options File" Value="E:\Escritorio\Dotnet Center\DotnetCenter\DotnetCenter.suo">
+</Property><Property Name="Date" Value="martes, 09 de octubre de 2007">
+</Property><Property Name="Time" Value="17:21">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="DotnetCenter.sln" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\DotnetCenter.sln">
+</Event><Event ErrorLevel="0" Project="" Source="DotnetCenter.suo" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\DotnetCenter.suo">
+</Event><Event ErrorLevel="0" Project="DotnetCenter" Source="DotnetCenter\DotnetCenter.csproj" Description="Project file successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\DotnetCenter\DotnetCenter.csproj">
+</Event><Event ErrorLevel="0" Project="DotnetCenter" Source="DotnetCenter\Center.cs" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\DotnetCenter\Center.cs">
+</Event><Event ErrorLevel="0" Project="DotnetCenter" Source="DotnetCenter\Center.Designer.cs" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\DotnetCenter\Center.Designer.cs">
+</Event><Event ErrorLevel="0" Project="DotnetCenter" Source="DotnetCenter\LogFactory.cs" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\DotnetCenter\LogFactory.cs">
+</Event><Event ErrorLevel="0" Project="DotnetCenter" Source="DotnetCenter\LogTypes\FileLog.cs" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\DotnetCenter\LogTypes\FileLog.cs">
+</Event><Event ErrorLevel="0" Project="DotnetCenter" Source="DotnetCenter\PluginServices.cs" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\DotnetCenter\PluginServices.cs">
+</Event><Event ErrorLevel="0" Project="DotnetCenter" Source="DotnetCenter\Program.cs" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\DotnetCenter\Program.cs">
+</Event><Event ErrorLevel="0" Project="DotnetCenter" Source="DotnetCenter\Properties\AssemblyInfo.cs" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\DotnetCenter\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="DotnetCenter" Source="DotnetCenter\Properties\Resources.Designer.cs" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\DotnetCenter\Properties\Resources.Designer.cs">
+</Event><Event ErrorLevel="0" Project="DotnetCenter" Source="DotnetCenter\Properties\Settings.Designer.cs" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\DotnetCenter\Properties\Settings.Designer.cs">
+</Event><Event ErrorLevel="0" Project="DotnetCenter" Source="DotnetCenter\Types\AvailablePlugin.cs" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\DotnetCenter\Types\AvailablePlugin.cs">
+</Event><Event ErrorLevel="0" Project="DotnetCenter" Source="DotnetCenter\Types\AvailablePlugins.cs" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\DotnetCenter\Types\AvailablePlugins.cs">
+</Event><Event ErrorLevel="0" Project="DotnetCenter" Source="DotnetCenter\Properties\Settings.settings" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\DotnetCenter\Properties\Settings.settings">
+</Event><Event ErrorLevel="0" Project="DotnetCenter" Source="DotnetCenter\Center.resx" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\DotnetCenter\Center.resx">
+</Event><Event ErrorLevel="0" Project="DotnetCenter" Source="DotnetCenter\Properties\Resources.resx" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\DotnetCenter\Properties\Resources.resx">
+</Event><Event ErrorLevel="0" Project="DotnetCenter" Source="DotnetCenter\DotnetCenter.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="DotnetCenter" Source="DotnetCenter\DotnetCenter.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="PluginInterfaces" Source="PluginInterfaces\PluginInterfaces.csproj" Description="Project file successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\PluginInterfaces\PluginInterfaces.csproj">
+</Event><Event ErrorLevel="0" Project="PluginInterfaces" Source="PluginInterfaces\ILog.cs" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\PluginInterfaces\ILog.cs">
+</Event><Event ErrorLevel="0" Project="PluginInterfaces" Source="PluginInterfaces\IPluginHost.cs" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\PluginInterfaces\IPluginHost.cs">
+</Event><Event ErrorLevel="0" Project="PluginInterfaces" Source="PluginInterfaces\PluginInterface.cs" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\PluginInterfaces\PluginInterface.cs">
+</Event><Event ErrorLevel="0" Project="PluginInterfaces" Source="PluginInterfaces\Properties\AssemblyInfo.cs" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\PluginInterfaces\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="PluginInterfaces" Source="PluginInterfaces\PluginInterfaces.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="PluginInterfaces" Source="PluginInterfaces\PluginInterfaces.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Plugin1" Source="Plugin1\Plugin1.csproj" Description="Project file successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\Plugin1\Plugin1.csproj">
+</Event><Event ErrorLevel="0" Project="Plugin1" Source="Plugin1\Plugin.cs" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\Plugin1\Plugin.cs">
+</Event><Event ErrorLevel="0" Project="Plugin1" Source="Plugin1\Properties\AssemblyInfo.cs" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\Plugin1\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="Plugin1" Source="Plugin1\ctlMain.cs" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\Plugin1\ctlMain.cs">
+</Event><Event ErrorLevel="0" Project="Plugin1" Source="Plugin1\ctlMain.Designer.cs" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\Plugin1\ctlMain.Designer.cs">
+</Event><Event ErrorLevel="0" Project="Plugin1" Source="Plugin1\ctlMain.resx" Description="File successfully backed up as E:\Escritorio\Dotnet Center\DotnetCenter\Backup\Plugin1\ctlMain.resx">
+</Event><Event ErrorLevel="0" Project="Plugin1" Source="Plugin1\Plugin1.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Plugin1" Source="Plugin1\Plugin1.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="DotnetCenter.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="DotnetCenter.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="DotnetCenter" Source="DotnetCenter\DotnetCenter.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="PluginInterfaces" Source="PluginInterfaces\PluginInterfaces.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Plugin1" Source="Plugin1\Plugin1.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>
