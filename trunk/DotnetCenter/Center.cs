@@ -115,7 +115,8 @@ namespace DotnetCenter
                 , ConfigFile.GetInstance().PasswordEmail);
             client.Port = ConfigFile.GetInstance().PortServerEmail;
             client.Host = ConfigFile.GetInstance().HostServerEmail;
-            client.EnableSsl = ConfigFile.GetInstance().EnableSslServerEmail; //Esto es para que vaya a través de SSL que es obligatorio con GMail
+            
+            //client.EnableSsl = ConfigFile.GetInstance().EnableSslServerEmail; -> No sportado en Mono
             try
             {
                 client.Send(msg);
