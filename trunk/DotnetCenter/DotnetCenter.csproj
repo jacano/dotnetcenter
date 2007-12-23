@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.20706</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{773D7F6F-7671-4347-B97F-19781243A63E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -49,7 +49,6 @@
     <Compile Include="Center.Designer.cs">
       <DependentUpon>Center.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConfigFile.cs" />
     <Compile Include="LogFactory.cs" />
     <Compile Include="LogTypes\FileLog.cs" />
     <Compile Include="PluginServices.cs" />
@@ -73,6 +72,10 @@
     <Compile Include="Types\AvailablePlugins.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Configuration\Configuration.csproj">
+      <Project>{29662169-3541-468D-A3DA-63472B76E994}</Project>
+      <Name>Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PluginInterfaces\PluginInterfaces.csproj">
       <Project>{EBC60624-E58F-4F04-BD56-DD6D703699EC}</Project>
       <Name>PluginInterfaces</Name>
@@ -82,9 +85,6 @@
     <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="DNCCenter.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

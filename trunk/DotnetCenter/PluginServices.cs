@@ -4,12 +4,13 @@ using System.Text;
 using PluginInterfaces;
 using System.IO;
 using System.Reflection;
+using Configuration;
 
 namespace DotnetCenter
 {
   	public class PluginServices : IPluginHost
 	{
-        public Atributes ConfigAtributes
+        public Attributes ConfigAtributes
         {
             get { return ConfigFile.GetInstance(); }
         }

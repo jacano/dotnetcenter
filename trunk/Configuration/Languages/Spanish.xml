@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DotnetCenter>
+  <Labels>
+    <opcionesToolStripMenuItem>Opciones</opcionesToolStripMenuItem>
+    <sendFeedbackToolStripMenuItem>Enviar Feedback</sendFeedbackToolStripMenuItem>
+    <aboutToolStripMenuItem>Sobre DotnetCenter</aboutToolStripMenuItem>
+    <exitToolStripMenuItem>Salir</exitToolStripMenuItem>
+    <gbPluginsInformation>Información de Plugin</gbPluginsInformation>
+  </Labels>
+</DotnetCenter>

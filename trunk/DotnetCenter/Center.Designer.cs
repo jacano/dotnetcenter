@@ -32,16 +32,16 @@ namespace DotnetCenter
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sendFeedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlPlugin = new System.Windows.Forms.Panel();
             this.treeView = new System.Windows.Forms.TreeView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbPluginsInformation = new System.Windows.Forms.GroupBox();
             this.lblPluginEmail = new System.Windows.Forms.Label();
             this.lblPluginVersion = new System.Windows.Forms.Label();
             this.lblPluginName = new System.Windows.Forms.Label();
             this.menuMain.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gbPluginsInformation.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuMain
@@ -58,30 +58,30 @@ namespace DotnetCenter
             // 
             this.opcionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sendFeedbackToolStripMenuItem,
-            this.sobreToolStripMenuItem,
+            this.aboutToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
-            this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
-            this.opcionesToolStripMenuItem.Text = "Opciones";
+            this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.opcionesToolStripMenuItem.Text = "Options";
             // 
             // sendFeedbackToolStripMenuItem
             // 
             this.sendFeedbackToolStripMenuItem.Name = "sendFeedbackToolStripMenuItem";
-            this.sendFeedbackToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.sendFeedbackToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.sendFeedbackToolStripMenuItem.Text = "Send Feedback";
             this.sendFeedbackToolStripMenuItem.Click += new System.EventHandler(this.sendFeedbackToolStripMenuItem_Click);
             // 
-            // sobreToolStripMenuItem
+            // aboutToolStripMenuItem
             // 
-            this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
-            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.sobreToolStripMenuItem.Text = "Acerca de";
-            this.sobreToolStripMenuItem.Click += new System.EventHandler(this.sobreToolStripMenuItem_Click);
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.aboutToolStripMenuItem.Text = "About DotnetCenter";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.sobreToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -110,19 +110,19 @@ namespace DotnetCenter
             this.treeView.TabIndex = 3;
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             // 
-            // groupBox1
+            // gbPluginsInformation
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox1.Controls.Add(this.lblPluginEmail);
-            this.groupBox1.Controls.Add(this.lblPluginVersion);
-            this.groupBox1.Controls.Add(this.lblPluginName);
-            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.groupBox1.Location = new System.Drawing.Point(11, 650);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(163, 70);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Plugin Information:";
+            this.gbPluginsInformation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.gbPluginsInformation.Controls.Add(this.lblPluginEmail);
+            this.gbPluginsInformation.Controls.Add(this.lblPluginVersion);
+            this.gbPluginsInformation.Controls.Add(this.lblPluginName);
+            this.gbPluginsInformation.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.gbPluginsInformation.Location = new System.Drawing.Point(11, 650);
+            this.gbPluginsInformation.Name = "gbPluginsInformation";
+            this.gbPluginsInformation.Size = new System.Drawing.Size(163, 70);
+            this.gbPluginsInformation.TabIndex = 6;
+            this.gbPluginsInformation.TabStop = false;
+            this.gbPluginsInformation.Text = "Plugin Information:";
             // 
             // lblPluginEmail
             // 
@@ -161,7 +161,7 @@ namespace DotnetCenter
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1008, 732);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbPluginsInformation);
             this.Controls.Add(this.pnlPlugin);
             this.Controls.Add(this.treeView);
             this.Controls.Add(this.menuMain);
@@ -174,7 +174,7 @@ namespace DotnetCenter
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Center_FormClosing);
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
+            this.gbPluginsInformation.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,11 +187,11 @@ namespace DotnetCenter
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Panel pnlPlugin;
         private System.Windows.Forms.TreeView treeView;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbPluginsInformation;
         private System.Windows.Forms.Label lblPluginEmail;
         private System.Windows.Forms.Label lblPluginVersion;
         private System.Windows.Forms.Label lblPluginName;
-        private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sendFeedbackToolStripMenuItem;
     }
 }
