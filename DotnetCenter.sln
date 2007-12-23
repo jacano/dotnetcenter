@@ -9,10 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionMiembros", "GestionM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionPrestamos", "GestionPrestamos\GestionPrestamos.csproj", "{03AABE03-70E1-4074-837D-B2C625F54E3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Configuration", "Configuration\Configuration.csproj", "{29662169-3541-468D-A3DA-63472B76E994}"
+EndProject
 Global
-	GlobalSection(TextTemplating) = postSolution
-		TextTemplating = 1
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -34,8 +33,15 @@ Global
 		{03AABE03-70E1-4074-837D-B2C625F54E3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03AABE03-70E1-4074-837D-B2C625F54E3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03AABE03-70E1-4074-837D-B2C625F54E3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29662169-3541-468D-A3DA-63472B76E994}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29662169-3541-468D-A3DA-63472B76E994}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29662169-3541-468D-A3DA-63472B76E994}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29662169-3541-468D-A3DA-63472B76E994}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TextTemplating) = postSolution
+		TextTemplating = 1
 	EndGlobalSection
 EndGlobal

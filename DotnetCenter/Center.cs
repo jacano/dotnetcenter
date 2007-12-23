@@ -7,6 +7,8 @@ using System.Text;
 using System.Windows.Forms;
 using PluginInterfaces;
 using System.Net.Mail;
+using Configuration;
+using System.IO;
 
 namespace DotnetCenter
 {
@@ -20,17 +22,18 @@ namespace DotnetCenter
             InitializeComponent();
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
+        #region Load Method
         private void Center_Load(object sender, EventArgs e)
         {
             log = LogFactory.GetInstance().CreateLog("File");
 
+            LoadLanguage();
+
             log.Write("Cargando Plugins ...");
-            Plugins.FindPlugins(Application.StartupPath + @"\Plugins");
+            if(Directory.Exists(Application.StartupPath + @"\Plugins"))
+                Plugins.FindPlugins(Application.StartupPath + @"\Plugins");
+            else
+                Directory.CreateDirectory(Application.StartupPath + @"\Plugins");
 
 
             log.Write("Cargando el TreeView");
@@ -43,13 +46,41 @@ namespace DotnetCenter
 
         }
 
+        private void LoadLanguage()
+        {
+            List<Object> lControls = new List<Object>();
+
+            //Add here all controls
+            lControls.Add(opcionesToolStripMenuItem);
+            lControls.Add(sendFeedbackToolStripMenuItem);
+            lControls.Add(aboutToolStripMenuItem);
+            lControls.Add(exitToolStripMenuItem);
+            lControls.Add(gbPluginsInformation);
+
+            for (int i = 0; i < lControls.Count; i++)
+            {
+                if (lControls[i] is ToolStripItem)
+                    ((ToolStripItem)lControls[i]).Text = Language.GetInstance().Items[i];
+                if (lControls[i] is Control)
+                    ((Control)lControls[i]).Text = Language.GetInstance().Items[i];
+            }
+        } 
+
+        #endregion
+
+        #region Actions Methods
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             //Make sure there's a selected Plugin
             if (this.treeView.SelectedNode != null)
             {
                 this.Text = "DotnetCenter - Cargando " + treeView.SelectedNode.Text;
-                
+
                 //Get the selected Plugin
                 Types.AvailablePlugin selectedPlugin = Plugins.AvailablePlugins.Find(treeView.SelectedNode.Text.ToString());
 
@@ -92,6 +123,9 @@ namespace DotnetCenter
             MessageBox.Show("\tDotnetClubs \r\r Version: 1.0.5 \r Web: http://dotnetcenter.dotnetclubs.com");
         }
 
+        #endregion
+
+        #region Utils Methods
         private void sendFeedbackToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SendFeedback sf = new SendFeedback();
@@ -100,36 +134,45 @@ namespace DotnetCenter
 
         public static string SendMail(string to, string tuNombre, string subject, string body)
         {
-            MailMessage msg = new MailMessage();
-            msg.To.Add(to);
-            msg.From = new MailAddress(ConfigFile.GetInstance().CuentaEmail, tuNombre, System.Text.Encoding.UTF8);
-            msg.Subject = subject;
-            msg.SubjectEncoding = System.Text.Encoding.UTF8;
-            msg.Body = body;
-            msg.BodyEncoding = System.Text.Encoding.UTF8;
-            msg.IsBodyHtml = false;
+            if (ConfigFile.GetInstance().Email != string.Empty || 
+                ConfigFile.GetInstance().HostServerEmail != string.Empty ||
+                ConfigFile.GetInstance().PasswordEmail != string.Empty)
+            {
+                MailMessage msg = new MailMessage();
+                msg.To.Add(to);
+                msg.From = new MailAddress(ConfigFile.GetInstance().Email, tuNombre, System.Text.Encoding.UTF8);
+                msg.Subject = subject;
+                msg.SubjectEncoding = System.Text.Encoding.UTF8;
+                msg.Body = body;
+                msg.BodyEncoding = System.Text.Encoding.UTF8;
+                msg.IsBodyHtml = false;
 
-            //Aquí es donde se hace lo especial
-            SmtpClient client = new SmtpClient();
-            client.Credentials = new System.Net.NetworkCredential(ConfigFile.GetInstance().CuentaEmail
-                , ConfigFile.GetInstance().PasswordEmail);
-            client.Port = ConfigFile.GetInstance().PortServerEmail;
-            client.Host = ConfigFile.GetInstance().HostServerEmail;
-            
-            //client.EnableSsl = ConfigFile.GetInstance().EnableSslServerEmail; -> No sportado en Mono
-            try
-            {
-                client.Send(msg);
-                log.Write("Feedback enviado a: " + to);
-                return "";
+                //Aquí es donde se hace lo especial
+                SmtpClient client = new SmtpClient();
+                client.Credentials = new System.Net.NetworkCredential(ConfigFile.GetInstance().Email
+                    , ConfigFile.GetInstance().PasswordEmail);
+                client.Port = ConfigFile.GetInstance().PortServerEmail;
+                client.Host = ConfigFile.GetInstance().HostServerEmail;
+
+                //client.EnableSsl = ConfigFile.GetInstance().EnableSslServerEmail; -> No sportado en Mono
+                try
+                {
+                    client.Send(msg);
+                    log.Write("Feedback enviado a: " + to);
+                    return "";
+                }
+                catch (System.Net.Mail.SmtpException ex)
+                {
+                    log.Write("Error enviando feedback: " + ex.ToString());
+                    return "Error enviando FeedBack";
+                }
             }
-            catch (System.Net.Mail.SmtpException ex)
+            else
             {
-                log.Write("Error enviando feedback: " + ex.ToString());
+                log.Write("Error email no configurado");
                 return "Error enviando FeedBack";
             }
-        }
-
-       
+        } 
+        #endregion
     }
 }
