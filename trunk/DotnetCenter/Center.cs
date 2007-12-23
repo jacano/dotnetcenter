@@ -29,14 +29,14 @@ namespace DotnetCenter
 
             LoadLanguage();
 
-            log.Write("Cargando Plugins ...");
+            log.Write("Loading Plugins ...");
             if(Directory.Exists(Application.StartupPath + @"\Plugins"))
                 Plugins.FindPlugins(Application.StartupPath + @"\Plugins");
             else
                 Directory.CreateDirectory(Application.StartupPath + @"\Plugins");
 
 
-            log.Write("Cargando el TreeView");
+            log.Write("Loading el menu");
             foreach (Types.AvailablePlugin pluginOn in Plugins.AvailablePlugins)
             {
                 TreeNode newNode = new TreeNode(pluginOn.Instance.Name);
@@ -79,7 +79,7 @@ namespace DotnetCenter
             //Make sure there's a selected Plugin
             if (this.treeView.SelectedNode != null)
             {
-                this.Text = "DotnetCenter - Cargando " + treeView.SelectedNode.Text;
+                this.Text = "DotnetCenter - Loading " + treeView.SelectedNode.Text;
 
                 //Get the selected Plugin
                 Types.AvailablePlugin selectedPlugin = Plugins.AvailablePlugins.Find(treeView.SelectedNode.Text.ToString());
@@ -158,19 +158,19 @@ namespace DotnetCenter
                 try
                 {
                     client.Send(msg);
-                    log.Write("Feedback enviado a: " + to);
+                    log.Write("Feedback send to: " + to);
                     return "";
                 }
                 catch (System.Net.Mail.SmtpException ex)
                 {
-                    log.Write("Error enviando feedback: " + ex.ToString());
-                    return "Error enviando FeedBack";
+                    log.Write("Error sending feedback: " + ex.ToString());
+                    return "Error sending FeedBack";
                 }
             }
             else
             {
-                log.Write("Error email no configurado");
-                return "Error enviando FeedBack";
+                log.Write("Error email doesn't configurate");
+                return "Error sending FeedBack";
             }
         } 
         #endregion
