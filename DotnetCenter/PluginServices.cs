@@ -92,7 +92,7 @@ namespace DotnetCenter
 			colAvailablePlugins.Clear();
 		}
 		
-		private void AddPlugin(string FileName)
+		public void AddPlugin(string FileName)
 		{
 			//Create a new assembly from the plugin file we're adding..
 			Assembly pluginAssembly = Assembly.LoadFrom(FileName);

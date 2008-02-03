@@ -12,11 +12,20 @@ using System.IO;
 
 namespace DotnetCenter
 {
+    /// <summary>
+    /// This delegate is used to load new plugins (.dll) for execution of the application.
+    /// </summary>
+    delegate void LoadingPluginsMenuDelegate();
+
+    
     public partial class Center : Form
     {
         public static PluginServices Plugins = new PluginServices();
         public static ILog log;
-        
+        private System.IO.FileSystemWatcher watcher;
+        private static TreeView treeViewReference;
+        static LoadingPluginsMenuDelegate loadingPluginsMenuDelegate  = LoadingPluginsMenu;
+
         public Center()
         {
             InitializeComponent();
@@ -35,7 +44,7 @@ namespace DotnetCenter
             else
                 Directory.CreateDirectory(Application.StartupPath + @"\Plugins");
 
-
+            treeViewReference = this.treeView;
             log.Write("Loading el menu");
             foreach (Types.AvailablePlugin pluginOn in Plugins.AvailablePlugins)
             {
@@ -44,7 +53,42 @@ namespace DotnetCenter
                 newNode = null;
             }
 
+            //Starting the FieSystemWatcher to notice new dll's
+            watcher = new System.IO.FileSystemWatcher();
+
+            watcher.Path = Path.GetDirectoryName(Application.StartupPath + @"\Plugins\");
+            watcher.Filter = Path.GetFileName(Application.StartupPath + @"\Plugins\*.dll");
+
+            watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.Size;
+
+            watcher.Created += new System.IO.FileSystemEventHandler(OnCreate);
+            watcher.EnableRaisingEvents = true;
+
         }
+
+       
+        public static void OnCreate(object source, FileSystemEventArgs e)
+        {
+            Plugins.AddPlugin(e.FullPath);
+            log.Write("It`s going to add the new plugin: " + Path.GetFileName(e.FullPath));
+            treeViewReference.Invoke(loadingPluginsMenuDelegate);
+            MessageBox.Show("The plugin " + Path.GetFileNameWithoutExtension(e.FullPath) + " has been loaded successfully");
+            
+        }
+
+
+        static void LoadingPluginsMenu()
+        {
+            treeViewReference.Nodes.Clear();
+            TreeNode newNode;
+            foreach (Types.AvailablePlugin pluginOn in Plugins.AvailablePlugins)
+            {
+                newNode = new TreeNode(pluginOn.Instance.Name);
+                treeViewReference.Nodes.Add(newNode);
+            }
+        }
+        
+
 
         private void LoadLanguage()
         {
