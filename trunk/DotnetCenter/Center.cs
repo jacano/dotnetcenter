@@ -219,5 +219,11 @@ namespace DotnetCenter
             }
         } 
         #endregion
+
+        private void pluginsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Plugins pluginsForm = new Plugins();
+            pluginsForm.Show();
+        }
     }
 }
