@@ -73,20 +73,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="SendFeedback.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>SendFeedback.cs</DependentUpon>
-    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="SendFeedback.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SendFeedback.Designer.cs">
-      <DependentUpon>SendFeedback.cs</DependentUpon>
     </Compile>
     <Compile Include="Types\AvailablePlugin.cs" />
     <Compile Include="Types\AvailablePlugins.cs" />

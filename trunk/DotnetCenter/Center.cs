@@ -24,10 +24,7 @@ namespace DotnetCenter
         public static ILog log;
         public static System.IO.FileSystemWatcher watcher;
         private static TreeView treeViewReference;
-        static LoadingPluginsMenuDelegate loadingPluginsMenuDelegate  = LoadingPluginsMenu;
-
-
-
+        private static LoadingPluginsMenuDelegate loadingPluginsMenuDelegate  = LoadingPluginsMenu;
 
         public Center()
         {
@@ -68,8 +65,6 @@ namespace DotnetCenter
             watcher.EnableRaisingEvents = true;
 
         }
-
-        
        
         public static void OnCreate(object source, FileSystemEventArgs e)
         {
@@ -80,7 +75,6 @@ namespace DotnetCenter
             MessageBox.Show("The plugin " + Path.GetFileNameWithoutExtension(e.FullPath) + " has been loaded successfully");
             
         }
-
 
         public static void LoadingPluginsMenu()
         {
@@ -93,15 +87,22 @@ namespace DotnetCenter
             }
         }
         
-
-
         private void LoadLanguage()
         {
             List<Object> lControls = new List<Object>();
 
+            //Add language list
+            foreach (string fileOn in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + "\\Languages\\"))
+            {
+                FileInfo file = new FileInfo(fileOn);
+                string[] name = file.Name.Split('.');
+                languageToolStripMenuItem.DropDownItems.Add(name[0]);
+            }
+
             //Add here all controls
             lControls.Add(opcionesToolStripMenuItem);
-            lControls.Add(sendFeedbackToolStripMenuItem);
+            lControls.Add(pluginsToolStripMenuItem);
+            lControls.Add(languageToolStripMenuItem);            
             lControls.Add(aboutToolStripMenuItem);
             lControls.Add(exitToolStripMenuItem);
             lControls.Add(gbPluginsInformation);
@@ -169,18 +170,17 @@ namespace DotnetCenter
 
         private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("\tDotnetClubs \r\r Version: 1.0.5 \r Web: http://dotnetcenter.dotnetclubs.com");
+            MessageBox.Show("\tDotnetClubs \r\r Version: 1.0.6 \r Web: http://dotnetcenter.dotnetclubs.com");
         }
 
+        private void pluginsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PluginsForm pluginsForm = new PluginsForm();
+            pluginsForm.Show();
+        }
         #endregion
 
         #region Utils Methods
-        private void sendFeedbackToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SendFeedback sf = new SendFeedback();
-            sf.Show();
-        }
-
         public static string SendMail(string to, string tuNombre, string subject, string body)
         {
             if (ConfigFile.GetInstance().Email != string.Empty || 
@@ -223,11 +223,5 @@ namespace DotnetCenter
             }
         } 
         #endregion
-
-        private void pluginsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            PluginsForm pluginsForm = new PluginsForm();
-            pluginsForm.Show();
-        }
     }
 }
