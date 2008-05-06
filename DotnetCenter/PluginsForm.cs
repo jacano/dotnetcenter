@@ -65,7 +65,6 @@ namespace DotnetCenter
                         {
                             if (DialogResult.Yes == MessageBox.Show("Would you like to copy this plugin to Plugin Directory?", "Save your plugin", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                             {
-
                                 string currentPluginsDir = AppDomain.CurrentDomain.BaseDirectory + "\\Plugins\\";
                                 string fileNameWithoutExtension = Path.GetFileName(this.openFileDialog1.FileName);
                                 Center.watcher.EnableRaisingEvents = false;

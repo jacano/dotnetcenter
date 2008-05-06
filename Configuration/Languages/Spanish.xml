@@ -2,7 +2,8 @@
 <DotnetCenter>
   <Labels>
     <opcionesToolStripMenuItem>Opciones</opcionesToolStripMenuItem>
-    <sendFeedbackToolStripMenuItem>Enviar Feedback</sendFeedbackToolStripMenuItem>
+    <pluginsToolStripMenuItem>Modulos</pluginsToolStripMenuItem>
+    <languageToolStripMenuItem>Idioma</languageToolStripMenuItem>
     <aboutToolStripMenuItem>Sobre DotnetCenter</aboutToolStripMenuItem>
     <exitToolStripMenuItem>Salir</exitToolStripMenuItem>
     <gbPluginsInformation>Información de Plugin</gbPluginsInformation>
