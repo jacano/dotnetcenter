@@ -156,10 +156,31 @@ namespace DotnetCenter
 			
 		}
 
-
-        public int RemovePlugin()
+        /// <summary>
+        /// Remove a existing plugin
+        /// </summary>
+        /// <param name="pluginName"></param>
+        /// <returns>Return 1 if the plugin has been removed. Return 0 if the plugin hasn't been found and return 2 if the plugin has been found but her assembly doesn't exit (something strange) </returns>
+        public int RemovePlugin(string pluginName)
         {
-            return 0;
+            Types.AvailablePlugin plugin=colAvailablePlugins.Find(pluginName);
+            if (plugin != null)
+            {
+                if (File.Exists(plugin.AssemblyPath))
+                {
+                    
+                    colAvailablePlugins.Remove(plugin);
+                    plugin.Instance.MainInterface.Dispose();
+                    plugin.Instance = null;
+                    File.Delete(plugin.AssemblyPath);
+                    return 1;
+                }
+                else
+                    return 2;
+                
+            }
+            else
+                return 0;
         }
 
 	}

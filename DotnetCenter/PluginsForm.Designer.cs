@@ -145,6 +145,7 @@
             this.buttonRemovePlugin.Text = "Remove plugin";
             this.buttonRemovePlugin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonRemovePlugin.UseVisualStyleBackColor = true;
+            this.buttonRemovePlugin.Click += new System.EventHandler(this.buttonRemovePlugin_Click);
             // 
             // listBoxPlugins
             // 
