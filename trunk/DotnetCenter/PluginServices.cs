@@ -92,7 +92,12 @@ namespace DotnetCenter
 			colAvailablePlugins.Clear();
 		}
 		
-		public void AddPlugin(string FileName)
+        /// <summary>
+        /// Add a new plugin to our system
+        /// </summary>
+        /// <param name="FileName"></param>
+        /// <returns>Return 1 if there is a new plugin, 2 if there aren't errors but we couldn't add any new plugin  or 0 if there are some error</returns>
+		public int AddPlugin(string FileName)
 		{
 			//Create a new assembly from the plugin file we're adding..
 			Assembly pluginAssembly = Assembly.LoadFrom(FileName);
@@ -124,32 +129,43 @@ namespace DotnetCenter
                             try
                             {
                                 newPlugin.Instance = (IPlugin)Activator.CreateInstance(pluginAssembly.GetType(pluginType.ToString()));
+                                
+                                //Set the Plugin's host to this class which inherited IPluginHost
+                                newPlugin.Instance.Host = this;
+
+                                //Call the initialization sub of the plugin
+                                newPlugin.Instance.Initialize();
+
+                                //Add the new plugin to our collection here
+                                this.colAvailablePlugins.Add(newPlugin);
+
+                                //cleanup a bit
+                                newPlugin = null;
+                                pluginAssembly = null; //more cleanup
+
+                                return 1;
                             }
                             catch (Exception ex)
                             {
                                 Center.log.Write("Error al cargar la dll: " + FileName);
+                                pluginAssembly = null; //more cleanup
+                                return 0;
                             }
-							
-							//Set the Plugin's host to this class which inherited IPluginHost
-							newPlugin.Instance.Host = this;
-
-							//Call the initialization sub of the plugin
-							newPlugin.Instance.Initialize();
-							
-							//Add the new plugin to our collection here
-							this.colAvailablePlugins.Add(newPlugin);
-							
-							//cleanup a bit
-							newPlugin = null;
 						}	
 						
 						typeInterface = null; //Mr. Clean			
 					}				
 				}			
 			}
+            return 2;
 			
-			pluginAssembly = null; //more cleanup
 		}
+
+
+        public int RemovePlugin()
+        {
+            return 0;
+        }
 
 	}
 }

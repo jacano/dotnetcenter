@@ -22,9 +22,12 @@ namespace DotnetCenter
     {
         public static PluginServices Plugins = new PluginServices();
         public static ILog log;
-        private System.IO.FileSystemWatcher watcher;
+        public static System.IO.FileSystemWatcher watcher;
         private static TreeView treeViewReference;
         static LoadingPluginsMenuDelegate loadingPluginsMenuDelegate  = LoadingPluginsMenu;
+
+
+
 
         public Center()
         {
@@ -66,6 +69,7 @@ namespace DotnetCenter
 
         }
 
+        
        
         public static void OnCreate(object source, FileSystemEventArgs e)
         {
@@ -78,7 +82,7 @@ namespace DotnetCenter
         }
 
 
-        static void LoadingPluginsMenu()
+        public static void LoadingPluginsMenu()
         {
             treeViewReference.Nodes.Clear();
             TreeNode newNode;
@@ -222,7 +226,7 @@ namespace DotnetCenter
 
         private void pluginsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Plugins pluginsForm = new Plugins();
+            PluginsForm pluginsForm = new PluginsForm();
             pluginsForm.Show();
         }
     }
