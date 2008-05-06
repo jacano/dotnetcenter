@@ -37,11 +37,6 @@ namespace DotnetCenter
 			set {colAvailablePlugins = value;}
 		}
 
-        public string SendMail(string to, string tuNombre, string subject, string body)
-        {
-            return Center.SendMail(to, tuNombre, subject, body);
-        }
-		
 		/// <summary>
 		/// Searches the Application's Startup Directory for Plugins
 		/// </summary>
