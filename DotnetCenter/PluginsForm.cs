@@ -11,12 +11,14 @@ namespace DotnetCenter
 {
     public partial class PluginsForm : Form
     {
-        public PluginsForm()
+        private Form center;
+
+        public PluginsForm(Form center)
         {
+            this.center = center;
             InitializeComponent();
 
             LoadPlugins();
-
         }
 
         private void LoadPlugins()
@@ -81,6 +83,11 @@ namespace DotnetCenter
                 
 
             }
+        }
+
+        private void PluginsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            center.Enabled = true;
         }
 
        

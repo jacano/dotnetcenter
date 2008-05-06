@@ -9,7 +9,5 @@ namespace PluginInterfaces
     {
        Attributes ConfigAtributes { get; }
        ILog Log { get;}
-
-       string SendMail(string to, string tuNombre, string subject, string body);
     }
 }

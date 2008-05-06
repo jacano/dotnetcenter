@@ -175,53 +175,14 @@ namespace DotnetCenter
 
         private void pluginsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PluginsForm pluginsForm = new PluginsForm();
+            PluginsForm pluginsForm = new PluginsForm(this);
             pluginsForm.Show();
+            Enabled = false;
         }
         #endregion
 
         #region Utils Methods
-        public static string SendMail(string to, string tuNombre, string subject, string body)
-        {
-            if (ConfigFile.GetInstance().Email != string.Empty || 
-                ConfigFile.GetInstance().HostServerEmail != string.Empty ||
-                ConfigFile.GetInstance().PasswordEmail != string.Empty)
-            {
-                MailMessage msg = new MailMessage();
-                msg.To.Add(to);
-                msg.From = new MailAddress(ConfigFile.GetInstance().Email, tuNombre, System.Text.Encoding.UTF8);
-                msg.Subject = subject;
-                msg.SubjectEncoding = System.Text.Encoding.UTF8;
-                msg.Body = body;
-                msg.BodyEncoding = System.Text.Encoding.UTF8;
-                msg.IsBodyHtml = false;
 
-                //Aquí es donde se hace lo especial
-                SmtpClient client = new SmtpClient();
-                client.Credentials = new System.Net.NetworkCredential(ConfigFile.GetInstance().Email
-                    , ConfigFile.GetInstance().PasswordEmail);
-                client.Port = ConfigFile.GetInstance().PortServerEmail;
-                client.Host = ConfigFile.GetInstance().HostServerEmail;
-
-                //client.EnableSsl = ConfigFile.GetInstance().EnableSslServerEmail; -> No sportado en Mono
-                try
-                {
-                    client.Send(msg);
-                    log.Write("Feedback send to: " + to);
-                    return "";
-                }
-                catch (System.Net.Mail.SmtpException ex)
-                {
-                    log.Write("Error sending feedback: " + ex.ToString());
-                    return "Error sending FeedBack";
-                }
-            }
-            else
-            {
-                log.Write("Error email doesn't configurate");
-                return "Error sending FeedBack";
-            }
-        } 
         #endregion
     }
 }
