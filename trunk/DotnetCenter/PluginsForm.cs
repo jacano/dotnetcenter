@@ -90,6 +90,28 @@ namespace DotnetCenter
             center.Enabled = true;
         }
 
+        private void buttonRemovePlugin_Click(object sender, EventArgs e)
+        {
+            int operationResult=Center.Plugins.RemovePlugin(this.listBoxPlugins.SelectedItem.ToString());
+            switch (operationResult)
+            {
+                case 0:
+                    MessageBox.Show("The plugin hasn't been found. Review the name.", "Error");
+                    break;
+                case 1:
+                    this.LoadPlugins();
+                    Center.LoadingPluginsMenu();
+                    MessageBox.Show("The new plugin has been removed correctly", "Correct operation");
+                    break;
+                case 2:
+                    MessageBox.Show("The plugin assembly doesn't exit. Review it please.", "Strange thing");
+                    break;
+                    
+            }
+            
+
+        }
+
        
     }
 }
