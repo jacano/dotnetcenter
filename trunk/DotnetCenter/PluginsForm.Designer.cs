@@ -39,7 +39,7 @@
             this.buttonAddPlugin = new System.Windows.Forms.Button();
             this.buttonRemovePlugin = new System.Windows.Forms.Button();
             this.listBoxPlugins = new System.Windows.Forms.ListBox();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -158,11 +158,11 @@
             this.listBoxPlugins.TabIndex = 6;
             this.listBoxPlugins.SelectedIndexChanged += new System.EventHandler(this.listBoxPlugins_SelectedIndexChanged);
             // 
-            // openFileDialog1
+            // openFileDialog
             // 
-            this.openFileDialog1.FileName = "MyPluginName.dll";
-            this.openFileDialog1.Filter = "DLL files|*.dll";
-            this.openFileDialog1.Title = "Select your plugin dll";
+            this.openFileDialog.FileName = "MyPluginName.dll";
+            this.openFileDialog.Filter = "DLL files|*.dll";
+            this.openFileDialog.Title = "Select your plugin dll";
             // 
             // PluginsForm
             // 
@@ -198,6 +198,6 @@
         private System.Windows.Forms.Button buttonAddPlugin;
         private System.Windows.Forms.Button buttonRemovePlugin;
         private System.Windows.Forms.ListBox listBoxPlugins;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }

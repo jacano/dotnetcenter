@@ -31,6 +31,8 @@ namespace DotnetCenter
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Center));
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlPlugin = new System.Windows.Forms.Panel();
@@ -39,8 +41,6 @@ namespace DotnetCenter
             this.lblPluginEmail = new System.Windows.Forms.Label();
             this.lblPluginVersion = new System.Windows.Forms.Label();
             this.lblPluginName = new System.Windows.Forms.Label();
-            this.pluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain.SuspendLayout();
             this.gbPluginsInformation.SuspendLayout();
             this.SuspendLayout();
@@ -65,6 +65,19 @@ namespace DotnetCenter
             this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
             this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.opcionesToolStripMenuItem.Text = "Options";
+            // 
+            // pluginsToolStripMenuItem
+            // 
+            this.pluginsToolStripMenuItem.Name = "pluginsToolStripMenuItem";
+            this.pluginsToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.pluginsToolStripMenuItem.Text = "Plugins";
+            this.pluginsToolStripMenuItem.Click += new System.EventHandler(this.pluginsToolStripMenuItem_Click);
+            // 
+            // languageToolStripMenuItem
+            // 
+            this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
+            this.languageToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.languageToolStripMenuItem.Text = "Language";
             // 
             // aboutToolStripMenuItem
             // 
@@ -149,19 +162,6 @@ namespace DotnetCenter
             this.lblPluginName.Size = new System.Drawing.Size(147, 16);
             this.lblPluginName.TabIndex = 0;
             this.lblPluginName.Text = "<Plugin Name Here>";
-            // 
-            // pluginsToolStripMenuItem
-            // 
-            this.pluginsToolStripMenuItem.Name = "pluginsToolStripMenuItem";
-            this.pluginsToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.pluginsToolStripMenuItem.Text = "Plugins";
-            this.pluginsToolStripMenuItem.Click += new System.EventHandler(this.pluginsToolStripMenuItem_Click);
-            // 
-            // languageToolStripMenuItem
-            // 
-            this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
-            this.languageToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.languageToolStripMenuItem.Text = "Language";
             // 
             // Center
             // 
