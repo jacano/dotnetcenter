@@ -25,10 +25,17 @@ namespace DotnetCenter
         public static System.IO.FileSystemWatcher watcher;
         private static TreeView treeViewReference;
         private static LoadingPluginsMenuDelegate loadingPluginsMenuDelegate  = LoadingPluginsMenu;
+        private static List<Object> lControls = new List<Object>();
+
+        public static TreeView TreeViewRefenrence
+        { 
+            get{return treeViewReference; }
+        }
 
         public Center()
         {
             InitializeComponent();
+            
         }
 
         #region Load Method
@@ -36,13 +43,15 @@ namespace DotnetCenter
         {
             log = LogFactory.GetInstance().CreateLog("File");
 
+            Plugins.PendingDelete();
+
             LoadLanguage();
 
             log.Write("Loading Plugins ...");
-            if(Directory.Exists(Application.StartupPath + @"\Plugins"))
-                Plugins.FindPlugins(Application.StartupPath + @"\Plugins");
+            if(Directory.Exists(Directories.PluginsDirectory))
+                Plugins.FindPlugins(Directories.PluginsDirectory);
             else
-                Directory.CreateDirectory(Application.StartupPath + @"\Plugins");
+                Directory.CreateDirectory(Directories.PluginsDirectory);
 
             treeViewReference = this.treeView;
             log.Write("Loading el menu");
@@ -56,8 +65,8 @@ namespace DotnetCenter
             //Starting the FieSystemWatcher to notice new dll's
             watcher = new System.IO.FileSystemWatcher();
 
-            watcher.Path = Path.GetDirectoryName(Application.StartupPath + @"\Plugins\");
-            watcher.Filter = Path.GetFileName(Application.StartupPath + @"\Plugins\*.dll");
+            watcher.Path = Path.GetDirectoryName(Directories.PluginsDirectory);
+            watcher.Filter = Path.GetFileName(Directories.PluginsFilter);
 
             watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.Size;
 
@@ -89,14 +98,16 @@ namespace DotnetCenter
         
         private void LoadLanguage()
         {
-            List<Object> lControls = new List<Object>();
-
             //Add language list
             foreach (string fileOn in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + "\\Languages\\"))
             {
                 FileInfo file = new FileInfo(fileOn);
                 string[] name = file.Name.Split('.');
-                languageToolStripMenuItem.DropDownItems.Add(name[0]);
+                ToolStripMenuItem i = new ToolStripMenuItem();
+                i.Name = name[0];
+                i.Text = name[0];
+                i.Click += new EventHandler(i_Click);
+                languageToolStripMenuItem.DropDownItems.Add(i);
             }
 
             //Add here all controls
@@ -107,6 +118,13 @@ namespace DotnetCenter
             lControls.Add(exitToolStripMenuItem);
             lControls.Add(gbPluginsInformation);
 
+            GetLabes();
+        }
+
+        private static void GetLabes()
+        {
+            Language.Load();
+
             for (int i = 0; i < lControls.Count; i++)
             {
                 if (lControls[i] is ToolStripItem)
@@ -114,6 +132,13 @@ namespace DotnetCenter
                 if (lControls[i] is Control)
                     ((Control)lControls[i]).Text = Language.GetInstance().Items[i];
             }
+        }
+
+        private void i_Click(object sender, EventArgs e)
+        {
+            ConfigFile.GetInstance().Language = ((ToolStripMenuItem)sender).Name;
+            ConfigFile.EditField(0, ConfigFile.GetInstance().Language);
+            GetLabes();
         } 
 
         #endregion
@@ -181,6 +206,7 @@ namespace DotnetCenter
         }
         #endregion
 
+       
         #region Utils Methods
 
         #endregion

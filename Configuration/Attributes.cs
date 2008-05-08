@@ -6,10 +6,6 @@ namespace Configuration
 {
     public sealed class Attributes : IDisposable
     {
-        public string Email;
-        public string PasswordEmail;
-        public int PortServerEmail;
-        public string HostServerEmail;
         public string Language;
 
         #region IDisposable Members

@@ -15,6 +15,7 @@ namespace DotnetCenter
 
         public PluginsForm(Form center)
         {
+
             this.center = center;
             InitializeComponent();
 
@@ -24,12 +25,14 @@ namespace DotnetCenter
         private void LoadPlugins()
         {
             this.listBoxPlugins.Items.Clear();
-            
+
             foreach (Types.AvailablePlugin pluginOn in Center.Plugins.AvailablePlugins)
             {
                 this.listBoxPlugins.Items.Add(pluginOn.Instance.Name);
             }
-            this.listBoxPlugins.SelectedIndex = 0;
+
+            if (listBoxPlugins.Items.Count > 0)
+                this.listBoxPlugins.SelectedIndex = 0;
         }
 
         private void listBoxPlugins_SelectedIndexChanged(object sender, EventArgs e)
@@ -43,46 +46,50 @@ namespace DotnetCenter
                 this.textBox_PluginName.Text = selectedPlugin.Instance.Name;
                 this.textBox_PluginVersion.Text = "(" + selectedPlugin.Instance.Version + ")";
                 this.textBox_Email.Text = selectedPlugin.Instance.Email;
-
             }
         }
 
         private void buttonAddPlugin_Click(object sender, EventArgs e)
         {
-            if (DialogResult.OK == this.openFileDialog1.ShowDialog())
-            {
-
-                int operationResult = Center.Plugins.AddPlugin(this.openFileDialog1.FileName);
-                switch (operationResult)
+            //if (File.Exists(Directories.FilePendingDelete))
+            //    MessageBox.Show("Before to install any plugin, The application need restart", "Warning");
+            //else{
+                if (DialogResult.OK == this.openFileDialog.ShowDialog())
                 {
-                    case 0:
-                        
-                        MessageBox.Show("There has been some error to try to add the new plugin", "Error");
-                        break;
-                    case 1:
-                        this.LoadPlugins();
-                        Center.LoadingPluginsMenu();
-                        MessageBox.Show("The new plugin has been added correctly", "Correct operation");
-                        if (!File.Exists(this.openFileDialog1.FileName))
+                    String[] l = openFileDialog.FileName.Split('\\');
+                    String filename = l[l.Length - 1];
+                    if (Center.Plugins.ValidatePlugin(openFileDialog.FileName))
+                    {
+                        String newPath = Path.Combine(Directories.PluginsDirectory, filename);
+                        if (File.Exists(newPath))
+                            MessageBox.Show("Already exists any plugin with same name", "Error");
+                        else
                         {
-                            if (DialogResult.Yes == MessageBox.Show("Would you like to copy this plugin to Plugin Directory?", "Save your plugin", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                            File.Copy(openFileDialog.FileName, newPath);
+                            int operationResult = Center.Plugins.AddPlugin(openFileDialog.FileName);
+                            Center.Plugins.DeleteFromPending(newPath);
+                            switch (operationResult)
                             {
-                                string currentPluginsDir = AppDomain.CurrentDomain.BaseDirectory + "\\Plugins\\";
-                                string fileNameWithoutExtension = Path.GetFileName(this.openFileDialog1.FileName);
-                                Center.watcher.EnableRaisingEvents = false;
-                                File.Copy(this.openFileDialog1.FileName, currentPluginsDir + fileNameWithoutExtension);
-                                Center.watcher.EnableRaisingEvents = true;
+                                case 0:
+                                    MessageBox.Show("There has been some error to try to add the new plugin", "Error");
+                                    break;
+
+                                case 1:
+                                    this.LoadPlugins();
+                                    Center.LoadingPluginsMenu();
+                                    MessageBox.Show("The new plugin has been added correctly", "Correct operation");
+                                    break;
+
+                                case 2:
+                                    MessageBox.Show("There wasn't error, but we couldn't add your new plugin. Review it please.", "Strange thing");
+                                    break;
                             }
                         }
-                        
-                        break;
-                    case 2:
-                        MessageBox.Show("There wasn't error, but we couldn't add your new plugin. Review it please.", "Strange thing");
-                        break;
+                    }
+                    else
+                        MessageBox.Show("This dll is not available plugin", "Error");
                 }
-                
-
-            }
+            //}
         }
 
         private void PluginsForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -92,26 +99,28 @@ namespace DotnetCenter
 
         private void buttonRemovePlugin_Click(object sender, EventArgs e)
         {
-            int operationResult=Center.Plugins.RemovePlugin(this.listBoxPlugins.SelectedItem.ToString());
-            switch (operationResult)
+            this.textBox_PluginName.Text = String.Empty;
+            this.textBox_PluginVersion.Text = String.Empty;
+            this.textBox_Email.Text = String.Empty;
+
+            if (listBoxPlugins.SelectedItem != null)
             {
-                case 0:
-                    MessageBox.Show("The plugin hasn't been found. Review the name.", "Error");
-                    break;
-                case 1:
-                    this.LoadPlugins();
-                    Center.LoadingPluginsMenu();
-                    MessageBox.Show("The new plugin has been removed correctly", "Correct operation");
-                    break;
-                case 2:
-                    MessageBox.Show("The plugin assembly doesn't exit. Review it please.", "Strange thing");
-                    break;
-                    
+                int operationResult = Center.Plugins.RemovePlugin(this.listBoxPlugins.SelectedItem.ToString());
+                switch (operationResult)
+                {
+                    case 0:
+                        MessageBox.Show("The plugin hasn't been found. Review the name.", "Error");
+                        break;
+                    case 1:
+                        this.LoadPlugins();
+                        Center.LoadingPluginsMenu();
+                        MessageBox.Show("The new plugin has been removed correctly, but you need restart de application to that complete operation", "Correct operation");
+                        break;
+                    case 2:
+                        MessageBox.Show("The plugin assembly doesn't exit. Review it please.", "Strange thing");
+                        break;
+                }
             }
-            
-
         }
-
-       
     }
 }

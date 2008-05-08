@@ -26,6 +26,7 @@ namespace DotnetCenter.Types
         /// <param name="pluginToRemove">The Plugin to Remove</param>
         public void Remove(Types.AvailablePlugin pluginToRemove)
         {
+            pluginToRemove.Dispose();
             this.List.Remove(pluginToRemove);
         }
 

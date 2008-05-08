@@ -2,10 +2,12 @@
 <DotnetCenter>
   <Labels>
     <opcionesToolStripMenuItem>Opciones</opcionesToolStripMenuItem>
-    <pluginsToolStripMenuItem>Modulos</pluginsToolStripMenuItem>
+    <pluginsToolStripMenuItem>Extensiones</pluginsToolStripMenuItem>
     <languageToolStripMenuItem>Idioma</languageToolStripMenuItem>
     <aboutToolStripMenuItem>Sobre DotnetCenter</aboutToolStripMenuItem>
     <exitToolStripMenuItem>Salir</exitToolStripMenuItem>
     <gbPluginsInformation>Información de Plugin</gbPluginsInformation>
   </Labels>
+  <Message>
+  </Message>
 </DotnetCenter>

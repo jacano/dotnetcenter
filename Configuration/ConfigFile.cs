@@ -29,13 +29,17 @@ namespace Configuration
 
             foreach (XmlNode node in xml.SelectNodes("/DotnetCenter/Config"))
             {
-                handle.Email = node.ChildNodes[0].InnerText;
-                handle.PasswordEmail = node.ChildNodes[1].InnerText;
-                if(node.ChildNodes[2].InnerText != String.Empty)
-                    handle.PortServerEmail = Int16.Parse(node.ChildNodes[2].InnerText);
-                handle.HostServerEmail = node.ChildNodes[3].InnerText;
-                handle.Language = node.ChildNodes[4].InnerText;
+                handle.Language = node.ChildNodes[0].InnerText;
             }
+        }
+
+        public static void EditField(int e, string s)
+        {
+            XmlDocument xml = new XmlDocument();
+            xml.Load(FileName);
+
+            xml.SelectNodes("/DotnetCenter/Config")[e].InnerText = s;
+            xml.Save(FileName);
         }
     }
 }

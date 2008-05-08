@@ -8,7 +8,7 @@ namespace DotnetCenter.Types
     /// <summary>
     /// Data Class for Available Plugin.  Holds and instance of the loaded Plugin, as well as the Plugin's Assembly Path
     /// </summary>
-    public class AvailablePlugin
+    public class AvailablePlugin : IDisposable
     {
         //This is the actual AvailablePlugin object.. 
         //Holds an instance of the plugin to access
@@ -25,6 +25,11 @@ namespace DotnetCenter.Types
         {
             get { return myAssemblyPath; }
             set { myAssemblyPath = value; }
+        }
+
+        public void Dispose()
+        {
+            myInstance.Dispose();
         }
     }
 }

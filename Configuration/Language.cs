@@ -14,9 +14,8 @@ namespace Configuration
         {
             if (handle == null)
             {
-                FileName = "Languages/" + ConfigFile.GetInstance().Language + ".xml";
                 handle = new Labels();
-                Load();
+                //Load();
             }
 
             return handle;
@@ -24,15 +23,18 @@ namespace Configuration
 
         public static void Load()
         {
+            FileName = "Languages/" + ConfigFile.GetInstance().Language + ".xml";
+
             //Lectura desde el fichero XML de proyecto
             XmlDocument xml = new XmlDocument();
             xml.Load(FileName);
 
+            GetInstance().Items.Clear();
             foreach (XmlNode node in xml.SelectNodes("/DotnetCenter/Labels"))
             {
                 foreach (XmlNode child in node.ChildNodes)
                 {
-                    handle.Items.Add(child.InnerText);
+                    GetInstance().Items.Add(child.InnerText);
                 }
             }
         }

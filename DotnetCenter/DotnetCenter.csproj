@@ -49,6 +49,7 @@
     <Compile Include="Center.Designer.cs">
       <DependentUpon>Center.cs</DependentUpon>
     </Compile>
+    <Compile Include="Directories.cs" />
     <Compile Include="LogFactory.cs" />
     <Compile Include="LogTypes\FileLog.cs" />
     <Compile Include="PluginsForm.cs">
