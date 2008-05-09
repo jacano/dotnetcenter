@@ -15,22 +15,20 @@ namespace DotnetCenter
     /// <summary>
     /// This delegate is used to load new plugins (.dll) for execution of the application.
     /// </summary>
-    delegate void LoadingPluginsMenuDelegate();
-
-    
+    //delegate void LoadingPluginsMenuDelegate();
     public partial class Center : Form
     {
         public static PluginServices Plugins = new PluginServices();
         public static ILog log;
-        public static System.IO.FileSystemWatcher watcher;
-        private static TreeView treeViewReference;
-        private static LoadingPluginsMenuDelegate loadingPluginsMenuDelegate  = LoadingPluginsMenu;
+        public FileSystemWatcher watcher;
+        //private static TreeView treeViewReference;
+        //private static LoadingPluginsMenuDelegate loadingPluginsMenuDelegate = LoadingPluginsMenu;
         private static List<Object> lControls = new List<Object>();
 
-        public static TreeView TreeViewRefenrence
-        { 
-            get{return treeViewReference; }
-        }
+        //public static TreeView TreeViewRefenrence
+        //{ 
+        //    get{return treeViewReference; }
+        //}
 
         public Center()
         {
@@ -53,14 +51,11 @@ namespace DotnetCenter
             else
                 Directory.CreateDirectory(Directories.PluginsDirectory);
 
-            treeViewReference = this.treeView;
+            //treeViewReference = this.treeView;
             log.Write("Loading el menu");
-            foreach (Types.AvailablePlugin pluginOn in Plugins.AvailablePlugins)
-            {
-                TreeNode newNode = new TreeNode(pluginOn.Instance.Name);
-                this.treeView.Nodes.Add(newNode);
-                newNode = null;
-            }
+            LoadingPluginsMenu();
+            if (navigator.Items.Count > 0) 
+                navigator.Items[0].action.Invoke();
 
             //Starting the FieSystemWatcher to notice new dll's
             watcher = new System.IO.FileSystemWatcher();
@@ -70,30 +65,66 @@ namespace DotnetCenter
 
             watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.Size;
 
-            watcher.Created += new System.IO.FileSystemEventHandler(OnCreate);
+            watcher.Created += new FileSystemEventHandler(OnCreate);
             watcher.EnableRaisingEvents = true;
 
         }
-       
-        public static void OnCreate(object source, FileSystemEventArgs e)
+
+        public void Selected()
+        {
+            string name = navigator.Items[navigator.SelectIndex].Text;
+            this.Text = "DotnetCenter - Loading " + name;
+            
+            //Get the selected Plugin
+            Types.AvailablePlugin selectedPlugin = Plugins.AvailablePlugins.Find(name);
+
+            if (selectedPlugin != null)
+            {
+                //Again, if the plugin is found, do some work...
+
+
+                //This part adds the plugin's info to the 'Plugin Information:' Frame
+                this.lblPluginName.Text = selectedPlugin.Instance.Name;
+                this.lblPluginVersion.Text = "(" + selectedPlugin.Instance.Version + ")";
+                this.lblPluginEmail.Text = selectedPlugin.Instance.Email;
+
+                //Clear the current panel of any other plugin controls... 
+                //Note: this only affects visuals.. doesn't close the instance of the plugin
+                this.pnlPlugin.Controls.Clear();
+
+                //Set the dockstyle of the plugin to fill, to fill up the space provided
+                selectedPlugin.Instance.MainInterface.Dock = DockStyle.Fill;
+
+                selectedPlugin.Instance.InitializeForm();
+                this.pnlPlugin.AutoScrollMinSize = selectedPlugin.Instance.MainInterface.Size;
+
+                //Finally, add the usercontrol to the panel... Tadah!
+                this.pnlPlugin.Controls.Add(selectedPlugin.Instance.MainInterface);
+            }
+
+            this.Text = "DotnetCenter";
+        }
+
+        public void OnCreate(object source, FileSystemEventArgs e)
         {
             Plugins.AddPlugin(e.FullPath);
             log.Write("It`s going to add the new plugin: " + Path.GetFileName(e.FullPath));
             //We're goint to clean the treeViewMenu by other thead, so we need Invoke(..)
-            treeViewReference.Invoke(loadingPluginsMenuDelegate);
+            LoadingPluginsMenu();
             MessageBox.Show("The plugin " + Path.GetFileNameWithoutExtension(e.FullPath) + " has been loaded successfully");
             
         }
 
-        public static void LoadingPluginsMenu()
+        public void LoadingPluginsMenu()
         {
-            treeViewReference.Nodes.Clear();
-            TreeNode newNode;
+            this.navigator.Items.Clear();
             foreach (Types.AvailablePlugin pluginOn in Plugins.AvailablePlugins)
             {
-                newNode = new TreeNode(pluginOn.Instance.Name);
-                treeViewReference.Nodes.Add(newNode);
+                ButtonItem p = new ButtonItem(pluginOn.Instance.Name);
+                p.action = delegate { Selected(); };
+                navigator.Items.Add(p);
             }
+
         }
         
         private void LoadLanguage()
@@ -124,7 +155,6 @@ namespace DotnetCenter
         private static void GetLabes()
         {
             Language.Load();
-
             for (int i = 0; i < lControls.Count; i++)
             {
                 if (lControls[i] is ToolStripItem)
@@ -149,45 +179,6 @@ namespace DotnetCenter
             Application.Exit();
         }
 
-        private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            //Make sure there's a selected Plugin
-            if (this.treeView.SelectedNode != null)
-            {
-                this.Text = "DotnetCenter - Loading " + treeView.SelectedNode.Text;
-
-                //Get the selected Plugin
-                Types.AvailablePlugin selectedPlugin = Plugins.AvailablePlugins.Find(treeView.SelectedNode.Text.ToString());
-
-                if (selectedPlugin != null)
-                {
-                    //Again, if the plugin is found, do some work...
-
-
-                    //This part adds the plugin's info to the 'Plugin Information:' Frame
-                    this.lblPluginName.Text = selectedPlugin.Instance.Name;
-                    this.lblPluginVersion.Text = "(" + selectedPlugin.Instance.Version + ")";
-                    this.lblPluginEmail.Text = selectedPlugin.Instance.Email;
-
-                    //Clear the current panel of any other plugin controls... 
-                    //Note: this only affects visuals.. doesn't close the instance of the plugin
-                    this.pnlPlugin.Controls.Clear();
-
-                    //Set the dockstyle of the plugin to fill, to fill up the space provided
-                    selectedPlugin.Instance.MainInterface.Dock = DockStyle.Fill;
-
-                    selectedPlugin.Instance.InitializeForm();
-                    this.pnlPlugin.AutoScrollMinSize = selectedPlugin.Instance.MainInterface.Size;
-
-                    //Finally, add the usercontrol to the panel... Tadah!
-                    this.pnlPlugin.Controls.Add(selectedPlugin.Instance.MainInterface);
-
-                }
-
-                this.Text = "DotnetCenter";
-            }
-        }
-
         private void Center_FormClosing(object sender, FormClosingEventArgs e)
         {
             Plugins.ClosePlugins();
@@ -195,14 +186,14 @@ namespace DotnetCenter
 
         private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("\tDotnetClubs \r\r Version: 1.0.6 \r Web: http://dotnetcenter.dotnetclubs.com");
+            MessageBox.Show("\tDotnetClubs \r\r Version: 1.0.6 \r Web: http://dotnetcenter.dotnetclubs.com", "About DotnetCenter");
         }
 
         private void pluginsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PluginsForm pluginsForm = new PluginsForm(this);
             pluginsForm.Show();
-            Enabled = false;
+            //Enabled = false;
         }
         #endregion
 

@@ -15,7 +15,6 @@ namespace Configuration
             if (handle == null)
             {
                 handle = new Labels();
-                //Load();
             }
 
             return handle;

@@ -40,6 +40,7 @@
             this.buttonRemovePlugin = new System.Windows.Forms.Button();
             this.listBoxPlugins = new System.Windows.Forms.ListBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btAdvanced = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -164,11 +165,22 @@
             this.openFileDialog.Filter = "DLL files|*.dll";
             this.openFileDialog.Title = "Select your plugin dll";
             // 
+            // btAdvanced
+            // 
+            this.btAdvanced.Location = new System.Drawing.Point(204, 320);
+            this.btAdvanced.Name = "btAdvanced";
+            this.btAdvanced.Size = new System.Drawing.Size(75, 23);
+            this.btAdvanced.TabIndex = 7;
+            this.btAdvanced.Text = "Advanced";
+            this.btAdvanced.UseVisualStyleBackColor = true;
+            this.btAdvanced.Click += new System.EventHandler(this.btAdvanced_Click);
+            // 
             // PluginsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(573, 355);
+            this.Controls.Add(this.btAdvanced);
             this.Controls.Add(this.listBoxPlugins);
             this.Controls.Add(this.buttonRemovePlugin);
             this.Controls.Add(this.buttonAddPlugin);
@@ -199,5 +211,6 @@
         private System.Windows.Forms.Button buttonRemovePlugin;
         private System.Windows.Forms.ListBox listBoxPlugins;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Button btAdvanced;
     }
 }

@@ -74,6 +74,14 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ButtonItem.resx">
+      <DependentUpon>ButtonItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Navigator.resx">
+      <DependentUpon>Navigator.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -81,6 +89,18 @@
     </Compile>
     <Compile Include="Types\AvailablePlugin.cs" />
     <Compile Include="Types\AvailablePlugins.cs" />
+    <Compile Include="UserControls\ButtonItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ButtonItem.designer.cs">
+      <DependentUpon>ButtonItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Navigator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Navigator.designer.cs">
+      <DependentUpon>Navigator.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Configuration\Configuration.csproj">

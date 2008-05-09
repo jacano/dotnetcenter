@@ -36,11 +36,11 @@ namespace DotnetCenter
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlPlugin = new System.Windows.Forms.Panel();
-            this.treeView = new System.Windows.Forms.TreeView();
             this.gbPluginsInformation = new System.Windows.Forms.GroupBox();
             this.lblPluginEmail = new System.Windows.Forms.Label();
             this.lblPluginVersion = new System.Windows.Forms.Label();
             this.lblPluginName = new System.Windows.Forms.Label();
+            this.navigator = new DotnetCenter.Navigator();
             this.menuMain.SuspendLayout();
             this.gbPluginsInformation.SuspendLayout();
             this.SuspendLayout();
@@ -105,19 +105,6 @@ namespace DotnetCenter
             this.pnlPlugin.Size = new System.Drawing.Size(816, 696);
             this.pnlPlugin.TabIndex = 5;
             // 
-            // treeView
-            // 
-            this.treeView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
-            this.treeView.FullRowSelect = true;
-            this.treeView.Location = new System.Drawing.Point(11, 24);
-            this.treeView.Name = "treeView";
-            this.treeView.ShowLines = false;
-            this.treeView.ShowPlusMinus = false;
-            this.treeView.Size = new System.Drawing.Size(163, 620);
-            this.treeView.TabIndex = 3;
-            this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
-            // 
             // gbPluginsInformation
             // 
             this.gbPluginsInformation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -163,18 +150,32 @@ namespace DotnetCenter
             this.lblPluginName.TabIndex = 0;
             this.lblPluginName.Text = "<Plugin Name Here>";
             // 
+            // navigator
+            // 
+            this.navigator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.navigator.BackGroundColor = System.Drawing.Color.White;
+            this.navigator.ItemsColor = System.Drawing.Color.LightGray;
+            this.navigator.Location = new System.Drawing.Point(11, 24);
+            this.navigator.MinimumSize = new System.Drawing.Size(150, 150);
+            this.navigator.Name = "navigator";
+            this.navigator.SelectIndex = 0;
+            this.navigator.Size = new System.Drawing.Size(163, 600);
+            this.navigator.TabIndex = 7;
+            // 
             // Center
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1008, 732);
+            this.Controls.Add(this.navigator);
             this.Controls.Add(this.gbPluginsInformation);
             this.Controls.Add(this.pnlPlugin);
-            this.Controls.Add(this.treeView);
             this.Controls.Add(this.menuMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuMain;
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "Center";
             this.Text = "Dotnet Center";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -194,7 +195,6 @@ namespace DotnetCenter
         private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Panel pnlPlugin;
-        private System.Windows.Forms.TreeView treeView;
         private System.Windows.Forms.GroupBox gbPluginsInformation;
         private System.Windows.Forms.Label lblPluginEmail;
         private System.Windows.Forms.Label lblPluginVersion;
@@ -202,6 +202,7 @@ namespace DotnetCenter
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pluginsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
+        private Navigator navigator;
     }
 }
 
