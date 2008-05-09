@@ -194,7 +194,7 @@ namespace DotnetCenter
                 {
                     try
                     {
-                        Center.TreeViewRefenrence.Nodes.Clear();
+                        //Center.TreeViewRefenrence.Nodes.Clear();
                         colAvailablePlugins.Remove(plugin);
                         plugin.Instance.MainInterface.Dispose();
                         plugin.Instance = null;

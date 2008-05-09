@@ -6,14 +6,15 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
 
 namespace DotnetCenter
 {
     public partial class PluginsForm : Form
     {
-        private Form center;
+        private Center center;
 
-        public PluginsForm(Form center)
+        public PluginsForm(Center center)
         {
 
             this.center = center;
@@ -51,9 +52,10 @@ namespace DotnetCenter
 
         private void buttonAddPlugin_Click(object sender, EventArgs e)
         {
-            //if (File.Exists(Directories.FilePendingDelete))
-            //    MessageBox.Show("Before to install any plugin, The application need restart", "Warning");
-            //else{
+            if (File.Exists(Directories.FilePendingDelete))
+                MessageBox.Show("Before to install any plugin, The application need restart", "Warning");
+            else
+            {
                 if (DialogResult.OK == this.openFileDialog.ShowDialog())
                 {
                     String[] l = openFileDialog.FileName.Split('\\');
@@ -76,7 +78,7 @@ namespace DotnetCenter
 
                                 case 1:
                                     this.LoadPlugins();
-                                    Center.LoadingPluginsMenu();
+                                    center.LoadingPluginsMenu();
                                     MessageBox.Show("The new plugin has been added correctly", "Correct operation");
                                     break;
 
@@ -89,7 +91,7 @@ namespace DotnetCenter
                     else
                         MessageBox.Show("This dll is not available plugin", "Error");
                 }
-            //}
+            }
         }
 
         private void PluginsForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -113,7 +115,7 @@ namespace DotnetCenter
                         break;
                     case 1:
                         this.LoadPlugins();
-                        Center.LoadingPluginsMenu();
+                        center.LoadingPluginsMenu();
                         MessageBox.Show("The new plugin has been removed correctly, but you need restart de application to that complete operation", "Correct operation");
                         break;
                     case 2:
@@ -121,6 +123,11 @@ namespace DotnetCenter
                         break;
                 }
             }
+        }
+
+        private void btAdvanced_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer", Directories.PluginsDirectory);
         }
     }
 }
