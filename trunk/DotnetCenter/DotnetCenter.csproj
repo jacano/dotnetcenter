@@ -141,10 +141,10 @@
     </Content>
     <Content Include="DNCCenter.ico" />
     <Content Include="Languages\English.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Languages\Spanish.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Plugins\GestionMiembros.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -152,7 +152,6 @@
     <Content Include="Plugins\GestionPrestamos.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="DotnetCenter_TemporaryKey.pfx" />
     <None Include="Resources\folder_view.png" />
     <None Include="Resources\delete.png" />
     <None Include="Resources\add.png" />
