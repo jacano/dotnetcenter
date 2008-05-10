@@ -20,14 +20,13 @@ namespace DotnetCenter
     public partial class Center : Form
     {
         public static PluginServices Plugins = new PluginServices();
+        private static List<Object> lControls = new List<Object>();
         public static ILog log;
         public FileSystemWatcher watcher;
-        private static List<Object> lControls = new List<Object>();
 
         public Center()
         {
             InitializeComponent();
-            
         }
 
         #region Load Method
@@ -45,7 +44,6 @@ namespace DotnetCenter
             else
                 Directory.CreateDirectory(Directories.PluginsDirectory);
 
-            //treeViewReference = this.treeView;
             log.Write("Loading el menu");
             LoadingPluginsMenu();
             if (navigator.Items.Count > 0) 
@@ -54,8 +52,8 @@ namespace DotnetCenter
             //Starting the FieSystemWatcher to notice new dll's
             watcher = new FileSystemWatcher();
 
-            watcher.Path = Path.GetDirectoryName(Application.StartupPath + @"\Plugins\");
-            watcher.Filter = Path.GetFileName("*.dll");
+            watcher.Path = Path.GetDirectoryName(Directories.PluginsDirectory);
+            watcher.Filter = Path.GetFileName(Directories.PluginsFilter);
 
             watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.Size;
 
@@ -74,8 +72,6 @@ namespace DotnetCenter
             if (selectedPlugin != null)
             {
                 //Again, if the plugin is found, do some work...
-
-
                 //This part adds the plugin's info to the 'Plugin Information:' Frame
                 this.lblPluginName.Text = selectedPlugin.Instance.Name;
                 this.lblPluginVersion.Text = "(" + selectedPlugin.Instance.Version + ")";
@@ -101,11 +97,11 @@ namespace DotnetCenter
         public void OnCreate(object source, FileSystemEventArgs e)
         {
             Plugins.AddPlugin(e.FullPath);
+
             log.Write("It`s going to add the new plugin: " + Path.GetFileName(e.FullPath));
             //We're goint to clean the treeViewMenu by other thead, so we need Invoke(..)
             LoadingPluginsMenu();
-            MessageBox.Show("The plugin " + Path.GetFileNameWithoutExtension(e.FullPath) + " has been loaded successfully");
-            
+            //MessageBox.Show("The plugin " + Path.GetFileNameWithoutExtension(e.FullPath) + " has been loaded successfully");
         }
 
         public void LoadingPluginsMenu()
@@ -117,7 +113,6 @@ namespace DotnetCenter
                 p.action = delegate { Selected(); };
                 navigator.Items.Add(p);
             }
-
         }
         
         private void LoadLanguage()

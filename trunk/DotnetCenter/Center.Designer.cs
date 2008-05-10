@@ -156,11 +156,11 @@ namespace DotnetCenter
                         | System.Windows.Forms.AnchorStyles.Left)));
             this.navigator.BackGroundColor = System.Drawing.Color.White;
             this.navigator.ItemsColor = System.Drawing.Color.LightGray;
-            this.navigator.Location = new System.Drawing.Point(11, 24);
+            this.navigator.Location = new System.Drawing.Point(11, 27);
             this.navigator.MinimumSize = new System.Drawing.Size(150, 150);
             this.navigator.Name = "navigator";
             this.navigator.SelectIndex = 0;
-            this.navigator.Size = new System.Drawing.Size(163, 600);
+            this.navigator.Size = new System.Drawing.Size(163, 597);
             this.navigator.TabIndex = 7;
             // 
             // Center
