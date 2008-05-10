@@ -38,9 +38,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Languages\Spanish.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
