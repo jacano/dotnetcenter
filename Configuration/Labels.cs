@@ -4,22 +4,25 @@ using System.Text;
 
 namespace Configuration
 {
-    public sealed class Labels : IDisposable
+    public sealed class Labels
     {
-        public List<string> Items;
+        public List<string> CenterLabels;
+        public List<string> PluginsManagerLabels;
+        public List<string> PluginsManagerMessages;
 
         public Labels()
         {
-            Items = new List<string>();
+            CenterLabels = new List<string>();
+            PluginsManagerLabels = new List<string>();
+            PluginsManagerMessages = new List<string>();
         }
 
-        #region IDisposable Members
-
-        public void Dispose()
+        public void clearAll()
         {
-            Items.Clear();
+            CenterLabels.Clear();
+            PluginsManagerLabels.Clear();
+            PluginsManagerMessages.Clear();
         }
 
-        #endregion
     }
 }

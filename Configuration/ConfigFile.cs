@@ -7,7 +7,6 @@ namespace Configuration
 {
     public class ConfigFile
     {
-        private const string FileName = "Config.xml";
         private static Attributes handle;
 
         public static Attributes GetInstance()
@@ -15,17 +14,16 @@ namespace Configuration
             if (handle == null)
             {
                 handle = new Attributes();
-                Load();
             }
 
             return handle;
         }
 
-        public static void Load()
+        public static void Load(string path)
         {
             //Lectura desde el fichero XML de proyecto
             XmlDocument xml = new XmlDocument();
-            xml.Load(FileName);
+            xml.Load(path);
 
             foreach (XmlNode node in xml.SelectNodes("/DotnetCenter/Config"))
             {
@@ -33,13 +31,13 @@ namespace Configuration
             }
         }
 
-        public static void EditField(int e, string s)
+        public static void EditField(string path, int e, string s)
         {
             XmlDocument xml = new XmlDocument();
-            xml.Load(FileName);
+            xml.Load(path);
 
             xml.SelectNodes("/DotnetCenter/Config")[e].InnerText = s;
-            xml.Save(FileName);
+            xml.Save(path);
         }
     }
 }

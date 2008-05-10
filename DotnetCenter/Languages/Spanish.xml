@@ -1,13 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <DotnetCenter>
-  <Labels>
+  <Center>
     <opcionesToolStripMenuItem>Opciones</opcionesToolStripMenuItem>
-    <pluginsToolStripMenuItem>Extensiones</pluginsToolStripMenuItem>
+    <pluginsToolStripMenuItem>Plugins</pluginsToolStripMenuItem>
     <languageToolStripMenuItem>Idioma</languageToolStripMenuItem>
     <aboutToolStripMenuItem>Sobre DotnetCenter</aboutToolStripMenuItem>
     <exitToolStripMenuItem>Salir</exitToolStripMenuItem>
     <gbPluginsInformation>Información de Plugin</gbPluginsInformation>
-  </Labels>
-  <Message>
-  </Message>
+  </Center>
+  <PluginsManager>
+    <Labels>
+      <PluginsManagerWindowsTitle>Gestor de plugins</PluginsManagerWindowsTitle>
+      <PluginsManagerGroupBox>Información de plugin</PluginsManagerGroupBox>
+      <PluginsManagerLabelName>Nombre:</PluginsManagerLabelName>
+      <PluginsManagerLabelVersion>Version:</PluginsManagerLabelVersion>
+      <PluginsManagerLabelEmail>Email:</PluginsManagerLabelEmail>
+      <PluginsManagerButtonAdvanced>Avanzado</PluginsManagerButtonAdvanced>
+      <PluginsManagerButtonAdd>Añadir Plugin</PluginsManagerButtonAdd>
+      <PluginsManagerButtonRemove>Borrar Plugin</PluginsManagerButtonRemove>
+    </Labels>
+    <Messages>
+      <PendingDelete>Después de desistalar un plugin, la aplicación necesita reiniciar.</PendingDelete>
+      <AlreadyExists>Ya existe un plugin con dicho nombre.</AlreadyExists>
+      <AddPlugin1>Se han producido errores mientras se intentaba añadir el nuevo plugin.</AddPlugin1>
+      <AddPlugin2>El plugin ha sido instalado correctamente.</AddPlugin2>
+      <AddPlugin3>No se han producido errores, pero no se puede iniciar el plugin.</AddPlugin3>
+      <ValidDll>Esta dll no es un plugin válido.</ValidDll>
+      <PluginNotFound>El plugin no ha sido encontrado.</PluginNotFound>
+      <RemovePlugin>El plugin ha sido borrado correctamente, pero la aplicación necesitará reiniciarse para completar el proceso.</RemovePlugin>
+      <Strangething>El ensamblado no existe. Revisa esto por favor.</Strangething>
+    </Messages>
+  </PluginsManager>
 </DotnetCenter>

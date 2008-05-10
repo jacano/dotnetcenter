@@ -33,6 +33,8 @@ namespace DotnetCenter
         private void Center_Load(object sender, EventArgs e)
         {
             log = LogFactory.GetInstance().CreateLog("File");
+            ConfigFile.GetInstance();
+            ConfigFile.Load(Directories.ConfigFile);
 
             Plugins.PendingDelete();
 
@@ -101,19 +103,28 @@ namespace DotnetCenter
             log.Write("It`s going to add the new plugin: " + Path.GetFileName(e.FullPath));
             //We're goint to clean the treeViewMenu by other thead, so we need Invoke(..)
             LoadingPluginsMenu();
-            MessageBox.Show("The plugin " + Path.GetFileNameWithoutExtension(e.FullPath) + " has been loaded successfully");
+            //MessageBox.Show("The plugin " + Path.GetFileNameWithoutExtension(e.FullPath) + " has been loaded successfully");
         }
 
         public void LoadingPluginsMenu()
         {
-            this.navigator.Items.Clear();
-            foreach (Types.AvailablePlugin pluginOn in Plugins.AvailablePlugins)
+
+            try
             {
-                ButtonItem p = new ButtonItem(pluginOn.Instance.Name);
-                p.action = delegate { Selected(); };
-                navigator.Items.Add(p);
+                this.navigator.Items.Clear();
+                foreach (Types.AvailablePlugin pluginOn in Plugins.AvailablePlugins)
+                {
+                    ButtonItem p = new ButtonItem(pluginOn.Instance.Name);
+                    p.action = delegate { Selected(); };
+                    navigator.Items.Add(p);
+                }
+
+                navigator.Invalidate();
             }
-            navigator.Invalidate();
+            catch (Exception ex)
+            {
+                log.Write("Error in LoadingPluginsMenu: " + ex.Message);
+            }
         }
         
         private void LoadLanguage()
@@ -143,20 +154,20 @@ namespace DotnetCenter
 
         private static void GetLabes()
         {
-            Language.Load();
+            Language.Load(Directories.LanguageDirectory);
             for (int i = 0; i < lControls.Count; i++)
             {
                 if (lControls[i] is ToolStripItem)
-                    ((ToolStripItem)lControls[i]).Text = Language.GetInstance().Items[i];
+                    ((ToolStripItem)lControls[i]).Text = Language.GetInstance().CenterLabels[i];
                 if (lControls[i] is Control)
-                    ((Control)lControls[i]).Text = Language.GetInstance().Items[i];
+                    ((Control)lControls[i]).Text = Language.GetInstance().CenterLabels[i];
             }
         }
 
         private void i_Click(object sender, EventArgs e)
         {
             ConfigFile.GetInstance().Language = ((ToolStripMenuItem)sender).Name;
-            ConfigFile.EditField(0, ConfigFile.GetInstance().Language);
+            ConfigFile.EditField(Directories.ConfigFile, 0, ConfigFile.GetInstance().Language);
             GetLabes();
         } 
 
@@ -183,7 +194,6 @@ namespace DotnetCenter
             PluginsForm pluginsForm = new PluginsForm(this);
             pluginsForm.Show();
             Enabled = false;
-            //Process.Start("explorer", Directories.PluginsDirectory);
         }
         #endregion
        

@@ -29,30 +29,30 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PluginsForm));
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbName = new System.Windows.Forms.Label();
             this.textBox_PluginName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbVersion = new System.Windows.Forms.Label();
             this.textBox_PluginVersion = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbEmail = new System.Windows.Forms.Label();
             this.textBox_Email = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox = new System.Windows.Forms.GroupBox();
             this.buttonAddPlugin = new System.Windows.Forms.Button();
             this.buttonRemovePlugin = new System.Windows.Forms.Button();
             this.listBoxPlugins = new System.Windows.Forms.ListBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.btAdvanced = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // lbName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(21, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Plugin Name:";
+            this.lbName.AutoSize = true;
+            this.lbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbName.Location = new System.Drawing.Point(21, 31);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(100, 16);
+            this.lbName.TabIndex = 1;
+            this.lbName.Text = "Plugin Name:";
             // 
             // textBox_PluginName
             // 
@@ -64,15 +64,15 @@
             this.textBox_PluginName.Size = new System.Drawing.Size(314, 26);
             this.textBox_PluginName.TabIndex = 2;
             // 
-            // label2
+            // lbVersion
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(21, 84);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 16);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Version:";
+            this.lbVersion.AutoSize = true;
+            this.lbVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbVersion.Location = new System.Drawing.Point(21, 84);
+            this.lbVersion.Name = "lbVersion";
+            this.lbVersion.Size = new System.Drawing.Size(65, 16);
+            this.lbVersion.TabIndex = 1;
+            this.lbVersion.Text = "Version:";
             // 
             // textBox_PluginVersion
             // 
@@ -84,15 +84,15 @@
             this.textBox_PluginVersion.Size = new System.Drawing.Size(314, 26);
             this.textBox_PluginVersion.TabIndex = 2;
             // 
-            // label3
+            // lbEmail
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(21, 138);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 16);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Email";
+            this.lbEmail.AutoSize = true;
+            this.lbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbEmail.Location = new System.Drawing.Point(21, 138);
+            this.lbEmail.Name = "lbEmail";
+            this.lbEmail.Size = new System.Drawing.Size(47, 16);
+            this.lbEmail.TabIndex = 1;
+            this.lbEmail.Text = "Email";
             // 
             // textBox_Email
             // 
@@ -104,31 +104,31 @@
             this.textBox_Email.Size = new System.Drawing.Size(314, 26);
             this.textBox_Email.TabIndex = 2;
             // 
-            // groupBox1
+            // groupBox
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox_Email);
-            this.groupBox1.Controls.Add(this.textBox_PluginName);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox_PluginVersion);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(204, 14);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(357, 217);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Plugin Information";
+            this.groupBox.Controls.Add(this.lbName);
+            this.groupBox.Controls.Add(this.textBox_Email);
+            this.groupBox.Controls.Add(this.textBox_PluginName);
+            this.groupBox.Controls.Add(this.lbEmail);
+            this.groupBox.Controls.Add(this.lbVersion);
+            this.groupBox.Controls.Add(this.textBox_PluginVersion);
+            this.groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox.Location = new System.Drawing.Point(204, 14);
+            this.groupBox.Name = "groupBox";
+            this.groupBox.Size = new System.Drawing.Size(357, 217);
+            this.groupBox.TabIndex = 3;
+            this.groupBox.TabStop = false;
+            this.groupBox.Text = "Plugin Information";
             // 
             // buttonAddPlugin
             // 
             this.buttonAddPlugin.Image = ((System.Drawing.Image)(resources.GetObject("buttonAddPlugin.Image")));
             this.buttonAddPlugin.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonAddPlugin.Location = new System.Drawing.Point(385, 287);
+            this.buttonAddPlugin.Location = new System.Drawing.Point(369, 287);
             this.buttonAddPlugin.Name = "buttonAddPlugin";
-            this.buttonAddPlugin.Size = new System.Drawing.Size(86, 56);
+            this.buttonAddPlugin.Size = new System.Drawing.Size(93, 56);
             this.buttonAddPlugin.TabIndex = 4;
             this.buttonAddPlugin.Text = "Add plugin";
             this.buttonAddPlugin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -139,9 +139,9 @@
             // 
             this.buttonRemovePlugin.Image = ((System.Drawing.Image)(resources.GetObject("buttonRemovePlugin.Image")));
             this.buttonRemovePlugin.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonRemovePlugin.Location = new System.Drawing.Point(475, 287);
+            this.buttonRemovePlugin.Location = new System.Drawing.Point(468, 287);
             this.buttonRemovePlugin.Name = "buttonRemovePlugin";
-            this.buttonRemovePlugin.Size = new System.Drawing.Size(86, 56);
+            this.buttonRemovePlugin.Size = new System.Drawing.Size(93, 56);
             this.buttonRemovePlugin.TabIndex = 5;
             this.buttonRemovePlugin.Text = "Remove plugin";
             this.buttonRemovePlugin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -187,7 +187,7 @@
             this.Controls.Add(this.listBoxPlugins);
             this.Controls.Add(this.buttonRemovePlugin);
             this.Controls.Add(this.buttonAddPlugin);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -195,21 +195,21 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Plugins";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PluginsForm_FormClosing);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBox.ResumeLayout(false);
+            this.groupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbName;
         private System.Windows.Forms.TextBox textBox_PluginName;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbVersion;
         private System.Windows.Forms.TextBox textBox_PluginVersion;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbEmail;
         private System.Windows.Forms.TextBox textBox_Email;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox;
         private System.Windows.Forms.Button buttonAddPlugin;
         private System.Windows.Forms.Button buttonRemovePlugin;
         private System.Windows.Forms.ListBox listBoxPlugins;

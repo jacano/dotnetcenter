@@ -17,6 +17,16 @@ namespace DotnetCenter
             get { return "*.dll"; }
         }
 
+        public static string ConfigFile
+        {
+            get { return Application.StartupPath + @"\Config.xml"; }
+        }
+
+        public static string LanguageDirectory
+        {
+            get { return Application.StartupPath + @"\Languages\"; }
+        }
+
         public static string FilePendingDelete
         {
             get { return Application.StartupPath + @"\Plugins\removePlugins.dc";}
@@ -25,11 +35,6 @@ namespace DotnetCenter
         public static string FilePluginInterfaces
         {
             get { return Application.StartupPath + @"\Plugins\PluginInterfaces.dll"; }
-        }
-
-        public static string ConfigFile
-        {
-            get { return "/DotnetCenter/Config"; }
         }
     }
 }
