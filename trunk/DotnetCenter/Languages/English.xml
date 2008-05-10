@@ -1,11 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <DotnetCenter>
-  <Labels>
+  <Center>
     <opcionesToolStripMenuItem>Options</opcionesToolStripMenuItem>
     <pluginsToolStripMenuItem>Plugins</pluginsToolStripMenuItem>
     <languageToolStripMenuItem>Language</languageToolStripMenuItem>
     <aboutToolStripMenuItem>About DotnetCenter</aboutToolStripMenuItem>
     <exitToolStripMenuItem>Exit</exitToolStripMenuItem>
     <gbPluginsInformation>Plugin Information</gbPluginsInformation>
-  </Labels>
+  </Center>
+  <PluginsManager>
+    <Labels>
+      <PluginsManagerWindowsTitle>Plugins Manager</PluginsManagerWindowsTitle>
+      <PluginsManagerGroupBox>Plugin Information</PluginsManagerGroupBox>
+      <PluginsManagerLabelName>Plugin Name:</PluginsManagerLabelName>
+      <PluginsManagerLabelVersion>Version:</PluginsManagerLabelVersion>
+      <PluginsManagerLabelEmail>Email:</PluginsManagerLabelEmail>
+      <PluginsManagerButtonAdvanced>Advanced</PluginsManagerButtonAdvanced>
+      <PluginsManagerButtonAdd>Add Plugin</PluginsManagerButtonAdd>
+      <PluginsManagerButtonRemove>Remove Plugin</PluginsManagerButtonRemove>
+    </Labels>
+    <Messages>
+      <PendingDelete>You need to restart the application in order to uninstall the plugin.</PendingDelete>
+      <AlreadyExists>There is already a plugin with the same name.</AlreadyExists>
+      <AddPlugin1>An error occurred while trying to add the new plugin.</AddPlugin1>
+      <AddPlugin2>The new plugin has been added correctly.</AddPlugin2>
+      <AddPlugin3>There were no errors, but the new plugin could not be added. Ckeck it please.</AddPlugin3>
+      <ValidDll>This dll is not a valid plugin.</ValidDll>
+      <PluginNotFound>Plugin not found. Check the name.</PluginNotFound>
+      <RemovePlugin>The new plugin has been removed correctly, but you need to restart the application in order to complete the process.</RemovePlugin>
+      <Strangething>The plugin assembly doesn't exit. Check it please.</Strangething>
+    </Messages>
+  </PluginsManager>
 </DotnetCenter>

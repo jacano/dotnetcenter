@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+using Configuration;
 
 namespace DotnetCenter
 {
@@ -21,6 +22,20 @@ namespace DotnetCenter
             InitializeComponent();
 
             LoadPlugins();
+
+            LoadLabels();
+        }
+
+        private void LoadLabels()
+        {
+            Text = Language.GetInstance().PluginsManagerLabels[0];
+            groupBox.Text = Language.GetInstance().PluginsManagerLabels[1];
+            lbName.Text = Language.GetInstance().PluginsManagerLabels[2];
+            lbVersion.Text = Language.GetInstance().PluginsManagerLabels[3];
+            lbEmail.Text = Language.GetInstance().PluginsManagerLabels[4];
+            btAdvanced.Text = Language.GetInstance().PluginsManagerLabels[5];
+            buttonAddPlugin.Text = Language.GetInstance().PluginsManagerLabels[6];
+            buttonRemovePlugin.Text = Language.GetInstance().PluginsManagerLabels[7];
         }
 
         private void LoadPlugins()
@@ -53,7 +68,7 @@ namespace DotnetCenter
         private void buttonAddPlugin_Click(object sender, EventArgs e)
         {
             if (File.Exists(Directories.FilePendingDelete))
-                MessageBox.Show("Before to install any plugin, The application need restart", "Warning");
+                MessageBox.Show(Language.GetInstance().PluginsManagerMessages[0], "Warning");
             else
             {
                 if (DialogResult.OK == this.openFileDialog.ShowDialog())
@@ -64,7 +79,7 @@ namespace DotnetCenter
                     {
                         String newPath = Path.Combine(Directories.PluginsDirectory, filename);
                         if (File.Exists(newPath))
-                            MessageBox.Show("Already exists any plugin with same name", "Error");
+                            MessageBox.Show(Language.GetInstance().PluginsManagerMessages[1], "Error");
                         else
                         {
                             center.watcher.EnableRaisingEvents = false;
@@ -75,23 +90,23 @@ namespace DotnetCenter
                             switch (operationResult)
                             {
                                 case 0:
-                                    MessageBox.Show("There has been some error to try to add the new plugin", "Error");
+                                    MessageBox.Show(Language.GetInstance().PluginsManagerMessages[2], "Error");
                                     break;
 
                                 case 1:
                                     this.LoadPlugins();
                                     center.LoadingPluginsMenu();
-                                    MessageBox.Show("The new plugin has been added correctly", "Correct operation");
+                                    MessageBox.Show(Language.GetInstance().PluginsManagerMessages[3], "Correct operation");
                                     break;
 
                                 case 2:
-                                    MessageBox.Show("There wasn't error, but we couldn't add your new plugin. Review it please.", "Strange thing");
+                                    MessageBox.Show(Language.GetInstance().PluginsManagerMessages[4], "Strange thing");
                                     break;
                             }
                         }
                     }
                     else
-                        MessageBox.Show("This dll is not available plugin", "Error");
+                        MessageBox.Show(Language.GetInstance().PluginsManagerMessages[5], "Error");
                 }
             }
         }
@@ -113,15 +128,15 @@ namespace DotnetCenter
                 switch (operationResult)
                 {
                     case 0:
-                        MessageBox.Show("The plugin hasn't been found. Review the name.", "Error");
+                        MessageBox.Show(Language.GetInstance().PluginsManagerMessages[6], "Error");
                         break;
                     case 1:
                         this.LoadPlugins();
                         center.LoadingPluginsMenu();
-                        MessageBox.Show("The new plugin has been removed correctly, but you need restart de application to that complete operation", "Correct operation");
+                        MessageBox.Show(Language.GetInstance().PluginsManagerMessages[7], "Correct operation");
                         break;
                     case 2:
-                        MessageBox.Show("The plugin assembly doesn't exit. Review it please.", "Strange thing");
+                        MessageBox.Show(Language.GetInstance().PluginsManagerMessages[8], "Strange thing");
                         break;
                 }
             }

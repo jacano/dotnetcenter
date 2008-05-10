@@ -20,22 +20,44 @@ namespace Configuration
             return handle;
         }
 
-        public static void Load()
+        public static void Load(string path)
         {
-            FileName = "Languages/" + ConfigFile.GetInstance().Language + ".xml";
+            FileName = path + ConfigFile.GetInstance().Language + ".xml";
 
             //Lectura desde el fichero XML de proyecto
             XmlDocument xml = new XmlDocument();
             xml.Load(FileName);
 
-            GetInstance().Items.Clear();
-            foreach (XmlNode node in xml.SelectNodes("/DotnetCenter/Labels"))
+            GetInstance().clearAll();
+
+            //Center Labels
+            foreach (XmlNode node in xml.SelectNodes("/DotnetCenter/Center"))
             {
                 foreach (XmlNode child in node.ChildNodes)
                 {
-                    GetInstance().Items.Add(child.InnerText);
+                    GetInstance().CenterLabels.Add(child.InnerText);
                 }
             }
+
+            //PluginsManager Labels
+            foreach (XmlNode node in xml.SelectNodes("/DotnetCenter/PluginsManager/Labels"))
+            {
+                foreach (XmlNode child in node.ChildNodes)
+                {
+                    GetInstance().PluginsManagerLabels.Add(child.InnerText);
+                }
+            }
+
+            //PluginsManager Messages
+            foreach (XmlNode node in xml.SelectNodes("/DotnetCenter/PluginsManager/Messages"))
+            {
+                foreach (XmlNode child in node.ChildNodes)
+                {
+                    GetInstance().PluginsManagerMessages.Add(child.InnerText);
+                }
+            }
+
+
         }
     }
 }
