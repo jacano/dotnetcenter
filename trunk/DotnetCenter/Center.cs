@@ -9,6 +9,7 @@ using PluginInterfaces;
 using System.Net.Mail;
 using Configuration;
 using System.IO;
+using System.Diagnostics;
 
 namespace DotnetCenter
 {
@@ -21,14 +22,7 @@ namespace DotnetCenter
         public static PluginServices Plugins = new PluginServices();
         public static ILog log;
         public FileSystemWatcher watcher;
-        //private static TreeView treeViewReference;
-        //private static LoadingPluginsMenuDelegate loadingPluginsMenuDelegate = LoadingPluginsMenu;
         private static List<Object> lControls = new List<Object>();
-
-        //public static TreeView TreeViewRefenrence
-        //{ 
-        //    get{return treeViewReference; }
-        //}
 
         public Center()
         {
@@ -58,16 +52,15 @@ namespace DotnetCenter
                 navigator.Items[0].action.Invoke();
 
             //Starting the FieSystemWatcher to notice new dll's
-            watcher = new System.IO.FileSystemWatcher();
+            watcher = new FileSystemWatcher();
 
-            watcher.Path = Path.GetDirectoryName(Directories.PluginsDirectory);
-            watcher.Filter = Path.GetFileName(Directories.PluginsFilter);
+            watcher.Path = Path.GetDirectoryName(Application.StartupPath + @"\Plugins\");
+            watcher.Filter = Path.GetFileName("*.dll");
 
             watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.Size;
 
             watcher.Created += new FileSystemEventHandler(OnCreate);
             watcher.EnableRaisingEvents = true;
-
         }
 
         public void Selected()
@@ -191,12 +184,12 @@ namespace DotnetCenter
 
         private void pluginsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PluginsForm pluginsForm = new PluginsForm(this);
-            pluginsForm.Show();
+            //PluginsForm pluginsForm = new PluginsForm(this);
+            //pluginsForm.Show();
             //Enabled = false;
+            Process.Start("explorer", Directories.PluginsDirectory);
         }
         #endregion
-
        
         #region Utils Methods
 
