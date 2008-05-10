@@ -73,7 +73,7 @@ namespace DotnetCenter
                             switch (operationResult)
                             {
                                 case 0:
-                                    MessageBox.Show("There has been some error to try to add the new plugin", "Error");
+                                    MessageBox.Show("There has been some error to try to add the new plugin, application need restart to loading this plugin", "Error");
                                     break;
 
                                 case 1:
