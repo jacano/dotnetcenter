@@ -167,11 +167,14 @@
             // 
             // btAdvanced
             // 
-            this.btAdvanced.Location = new System.Drawing.Point(204, 320);
+            this.btAdvanced.Image = ((System.Drawing.Image)(resources.GetObject("btAdvanced.Image")));
+            this.btAdvanced.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btAdvanced.Location = new System.Drawing.Point(204, 287);
             this.btAdvanced.Name = "btAdvanced";
-            this.btAdvanced.Size = new System.Drawing.Size(75, 23);
+            this.btAdvanced.Size = new System.Drawing.Size(86, 56);
             this.btAdvanced.TabIndex = 7;
             this.btAdvanced.Text = "Advanced";
+            this.btAdvanced.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btAdvanced.UseVisualStyleBackColor = true;
             this.btAdvanced.Click += new System.EventHandler(this.btAdvanced_Click);
             // 
