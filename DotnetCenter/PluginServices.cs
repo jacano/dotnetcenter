@@ -148,7 +148,11 @@ namespace DotnetCenter
                             //For now we'll just make an instance of all the plugins
                             try
                             {
-                                newPlugin.Instance = (IPlugin)Activator.CreateInstance(pluginAssembly.GetType(pluginType.ToString()));
+                                //newPlugin.Instance = (IPlugin)Activator.CreateInstance(pluginAssembly.GetType(pluginType.ToString()));
+                                string type = pluginType.ToString();
+                                Type t = pluginAssembly.GetType(type);
+                                object o = Activator.CreateInstance(t);
+                                newPlugin.Instance = o as IPlugin;
 
                                 //Set the Plugin's host to this class which inherited IPluginHost
                                 newPlugin.Instance.Host = this;
@@ -158,7 +162,7 @@ namespace DotnetCenter
 
                                 //Add the new plugin to our collection here
                                 this.colAvailablePlugins.Add(newPlugin);
-                                
+
                                 //cleanup a bit
                                 newPlugin = null;
                                 pluginAssembly = null; //more cleanup
@@ -172,7 +176,7 @@ namespace DotnetCenter
                                 return 0;
                             }
                         }
-                        
+
                         typeInterface = null; //Mr. Clean			
                     }
                 }

@@ -9,12 +9,12 @@ namespace DotnetCenter
     {
         public static string PluginsDirectory 
         {
-            get { return Application.StartupPath + @"\Plugins"; }
+            get { return Application.StartupPath + @"\Plugins\"; }
         }
 
         public static string PluginsFilter
         {
-            get { return Application.StartupPath + @"\Plugins\*.dll"; }
+            get { return "*.dll"; }
         }
 
         public static string FilePendingDelete
