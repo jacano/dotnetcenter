@@ -118,6 +118,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DNCCenter.ico" />
+    <Content Include="images\add.png" />
+    <Content Include="images\delete.png" />
+    <Content Include="images\folder_view.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
