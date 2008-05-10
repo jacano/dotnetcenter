@@ -101,7 +101,7 @@ namespace DotnetCenter
             log.Write("It`s going to add the new plugin: " + Path.GetFileName(e.FullPath));
             //We're goint to clean the treeViewMenu by other thead, so we need Invoke(..)
             LoadingPluginsMenu();
-            //MessageBox.Show("The plugin " + Path.GetFileNameWithoutExtension(e.FullPath) + " has been loaded successfully");
+            MessageBox.Show("The plugin " + Path.GetFileNameWithoutExtension(e.FullPath) + " has been loaded successfully");
         }
 
         public void LoadingPluginsMenu()
