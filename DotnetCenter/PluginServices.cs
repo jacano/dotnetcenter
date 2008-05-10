@@ -148,11 +148,7 @@ namespace DotnetCenter
                             //For now we'll just make an instance of all the plugins
                             try
                             {
-                                //newPlugin.Instance = (IPlugin)Activator.CreateInstance(pluginAssembly.GetType(pluginType.ToString()));
-                                string type = pluginType.ToString();
-                                Type t = pluginAssembly.GetType(type);
-                                object o = Activator.CreateInstance(t);
-                                newPlugin.Instance = o as IPlugin;
+                                newPlugin.Instance = (IPlugin)Activator.CreateInstance(pluginAssembly.GetType(pluginType.ToString()));
 
                                 //Set the Plugin's host to this class which inherited IPluginHost
                                 newPlugin.Instance.Host = this;
@@ -247,6 +243,9 @@ namespace DotnetCenter
         {
             try
             {
+                if(File.Exists(Directories.FilePluginInterfaces))
+                    File.Delete(Directories.FilePluginInterfaces);
+
                 if (File.Exists(Directories.FilePendingDelete))
                 {
                     StreamReader sr = new StreamReader(Directories.FilePendingDelete);

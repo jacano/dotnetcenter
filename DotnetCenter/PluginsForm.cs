@@ -67,13 +67,15 @@ namespace DotnetCenter
                             MessageBox.Show("Already exists any plugin with same name", "Error");
                         else
                         {
+                            center.watcher.EnableRaisingEvents = false;
                             File.Copy(openFileDialog.FileName, newPath);
+                            center.watcher.EnableRaisingEvents = true;
                             int operationResult = Center.Plugins.AddPlugin(openFileDialog.FileName);
-                            Center.Plugins.DeleteFromPending(newPath);
+                            Center.Plugins.DeleteFromPending(newPath);  //ahora mismo no hace falta
                             switch (operationResult)
                             {
                                 case 0:
-                                    MessageBox.Show("There has been some error to try to add the new plugin, application need restart to loading this plugin", "Error");
+                                    MessageBox.Show("There has been some error to try to add the new plugin", "Error");
                                     break;
 
                                 case 1:
