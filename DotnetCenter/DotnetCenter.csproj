@@ -19,7 +19,7 @@
     <ManifestCertificateThumbprint>CA40D1BACA51CEBB2578A6C11EFF30EB0E158786</ManifestCertificateThumbprint>
     <ManifestKeyFile>DotnetCenter_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
     <PublishUrl>ftp://dotnetcenter_clickonce%40www.dotnetclubs.com/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -145,12 +145,6 @@
     </Content>
     <Content Include="Languages\Spanish.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Plugins\GestionMiembros.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Plugins\GestionPrestamos.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\folder_view.png" />
     <None Include="Resources\delete.png" />
