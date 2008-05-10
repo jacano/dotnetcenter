@@ -113,6 +113,7 @@ namespace DotnetCenter
                 p.action = delegate { Selected(); };
                 navigator.Items.Add(p);
             }
+            navigator.Invalidate();
         }
         
         private void LoadLanguage()
@@ -179,10 +180,10 @@ namespace DotnetCenter
 
         private void pluginsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //PluginsForm pluginsForm = new PluginsForm(this);
-            //pluginsForm.Show();
-            //Enabled = false;
-            Process.Start("explorer", Directories.PluginsDirectory);
+            PluginsForm pluginsForm = new PluginsForm(this);
+            pluginsForm.Show();
+            Enabled = false;
+            //Process.Start("explorer", Directories.PluginsDirectory);
         }
         #endregion
        

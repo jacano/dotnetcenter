@@ -22,6 +22,11 @@ namespace DotnetCenter
             get { return Application.StartupPath + @"\Plugins\removePlugins.dc";}
         }
 
+        public static string FilePluginInterfaces
+        {
+            get { return Application.StartupPath + @"\Plugins\PluginInterfaces.dll"; }
+        }
+
         public static string ConfigFile
         {
             get { return "/DotnetCenter/Config"; }
