@@ -7,6 +7,7 @@ namespace Configuration
     public sealed class Attributes : IDisposable
     {
         public string Language;
+        public string PluginDirectory;
 
         #region IDisposable Members
 

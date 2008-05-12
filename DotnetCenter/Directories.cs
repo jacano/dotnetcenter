@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace DotnetCenter
 {
@@ -9,7 +10,13 @@ namespace DotnetCenter
     {
         public static string PluginsDirectory 
         {
-            get { return Application.StartupPath + @"\Plugins\"; }
+            get 
+            {
+                if (Configuration.ConfigFile.GetInstance().PluginDirectory == "Default")
+                    return Environment.GetEnvironmentVariable("userprofile") + "\\DotnetCenter\\Plugins" + "\\";
+                else
+                    return Configuration.ConfigFile.GetInstance().PluginDirectory + "\\";
+            }
         }
 
         public static string PluginsFilter
