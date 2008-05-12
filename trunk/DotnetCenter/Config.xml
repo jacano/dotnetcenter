@@ -2,6 +2,6 @@
 <DotnetCenter>
   <Config>
     <Language>English</Language>
-    <PluginsDirectory>Default</PluginsDirectory>
+    <PluginsDirectory></PluginsDirectory>
   </Config>
 </DotnetCenter>

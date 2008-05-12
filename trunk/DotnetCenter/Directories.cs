@@ -12,7 +12,7 @@ namespace DotnetCenter
         {
             get 
             {
-                if (Configuration.ConfigFile.GetInstance().PluginDirectory == "Default")
+                if (Configuration.ConfigFile.GetInstance().PluginDirectory == String.Empty)
                     return Environment.GetEnvironmentVariable("userprofile") + "\\DotnetCenter\\Plugins" + "\\";
                 else
                     return Configuration.ConfigFile.GetInstance().PluginDirectory + "\\";
