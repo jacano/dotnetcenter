@@ -28,6 +28,7 @@ namespace Configuration
             foreach (XmlNode node in xml.SelectNodes("/DotnetCenter/Config"))
             {
                 handle.Language = node.ChildNodes[0].InnerText;
+                handle.PluginDirectory = node.ChildNodes[1].InnerText;
             }
         }
 
