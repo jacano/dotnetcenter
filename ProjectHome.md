@@ -1,0 +1,1 @@
+You can build plugins easily and quickly to manage your dotnetclub.
